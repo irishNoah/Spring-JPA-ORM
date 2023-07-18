@@ -57,7 +57,7 @@
 
 ### 스프링 부트의 정적 컨텐츠 설명
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(%E1%8.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/4afa39ad-06b8-49a3-a8e3-2ed1b81ae11a)
 
 - 실행하면 내장 톰켓 서버로 이동 후 스프링 컨테이너에 정적 html이 있는지 확인한다.
 - 여기서 hello-static.html은 컨트롤러가 없으므로 2번에 해당하는 resources에서 hello-static.html이 있는지 확인한다.
@@ -98,7 +98,7 @@
 
 - URL 창에서 hello-mvc 뒤에 ?name=irish 하고 엔터를 치니까 실행 화면에 “hello irish”란 창이 뜬 것을 볼 수 있다.
 
-![U6048eff/Untitled%205.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/8253e097-3a66-40ae-91f8-69a9852ec352)
 
 - 또한 실행 코드를 보면 'hello ' + ${name}의 ${name} 자리에 irish가 들어있는 것을 알 수 있다.
 - 즉, MVC는 html 형식으로 데이터가 오고 간다!!!
