@@ -1,10 +1,4 @@
-# 총정리(ORM&JPA)
-
-태그: ORM & JPA(기본)
-
-- 토글 목차
-
----
+> 총정리(ORM&JPA)
 
 # 섹션01 - JPA 소개
 
@@ -19,9 +13,7 @@
 
 ### 해결 방법
 
-- 그래서 객체를 자바 컬렉션에 저장 하듯이 DB에 저장할 수 있는 방법이 과거부터 개발자의 숙제였는데, 이것을 해결을 해 준 것이 **JPA**이다!!!
-
-PA 소개
+- 그래서 객체를 자바 컬렉션에 저장 하듯이 DB에 저장할 수 있는 방법이 과거부터 개발자의 숙제였는데, 이것을 해결을 해 준 것이 JPA이다!!!
 
 ## JPA
 
@@ -39,7 +31,7 @@ PA 소개
 
 ## JPA는 애플리케이션과 JDBC 사이에서 동작
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/5f998280-616d-41e1-a896-07eb51908e95)
 
 - 기존에는 JDBC에서 DB로 처리
 - JPA 등장 이후
@@ -59,7 +51,7 @@ PA 소개
 
 저장
 
-![조회](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%202.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/ab7b0cb1-4646-4ccb-8028-8fdd4fa1de68)
 
 조회
 
@@ -73,15 +65,17 @@ PA 소개
 1. 같은 트랜잭션 안에서는 같은 엔티티를 반환 → 약간의 조회 성능 향상
 2. DB Isolation Level이 Read Commit이어도 애플리케이션에서 Repeatable Read 보장
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%203.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/a1367b9c-d556-4e61-86bc-8e4e1407a9ba)
+
 
 - 쿼리가 동일하더라도, 두 문장을 SQL로써 두 번 실행하는 것이 아니다.
 - 첫 번째 쿼리(m1)만 실제 DB에 다녀오고, 동일한 쿼리인(m2)는 캐시로서 값이 제공한다.
-- 이를 통해, **결과는 동일해도 네트워크를 다녀오는 횟수를 줄이므로써 성능을 향상**시킨다.
+- 이를 통해, 결과는 동일해도 네트워크를 다녀오는 횟수를 줄이므로써 성능을 향상시킨다.
 
 ### ✨ 트랜잭션을 지원하는 쓰기 지연 - INSERT
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%204.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/d2c0d08a-d498-406b-9509-6f306f4dbd00)
+
 
 - 쿼리를 할 때마다 DB에 접근? >>> 네트워크 비용 많아짐
 - 만약, 쿼리를 모았다가 한 번에 접근? >>> 네트워크 비용 줄어짐
@@ -91,13 +85,13 @@ PA 소개
 
 ### ✨ 지연 로딩과 즉시 로딩
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%205.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/2d054891-838d-4d25-845f-1321bc7cd3cb)
 
 - 지연 로딩
-    - 만약, **두 테이블의 연결 빈도가 적다면 각각을 분리하여 쿼리를 작성**하다가, 필요한 경우에만 Join하면 좋을 것임
+    - 만약, 두 테이블의 연결 빈도가 적다면 각각을 분리하여 쿼리를 작성하다가, 필요한 경우에만 Join하면 좋을 것임
     - 이것이 지연 로딩이라고 함
 - 즉시 로딩
-    - 만약, **두 테이블의 연결 빈도가 높다면 애초에 Join 한 것을 쿼리로 작성**하는 것이 좋을 것임
+    - 만약, 두 테이블의 연결 빈도가 높다면 애초에 Join 한 것을 쿼리로 작성하는 것이 좋을 것임
     - 이것이 즉시 로딩이라고 함
 
 ---
@@ -106,12 +100,12 @@ PA 소개
 
 ## 데이터베이스 방언
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%206.png)
-
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/69fe5572-21e9-4b6c-bc03-20b590e1e73c)
+	
 - 각 DB마다 저마다의 문법이 있다. 이것을 데이터베이스 방언이라 한다.
-    - 그렇기 때문에 **이 방언을 알아서 해결해 줄 것이 필요하고 이것이 hibernate.dialect**이다.
+    - 그렇기 때문에 이 방언을 알아서 해결해 줄 것이 필요하고 이것이 hibernate.dialect이다.
 
-## **애플리케이션 개발**
+## 애플리케이션 개발
 
 - jpaMain.java
 
@@ -159,25 +153,26 @@ public class JpaMain {
 - 엔티티 매니저란 JPA의 기능 대부분을 제공한다. 엔티티 매니저를 사용해서 엔티티를 데이터베이스에 등록/수정/삭제/조회할 수 있다.
 - 엔티티 매니저 생성 과정은 아래와 같다.
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%207.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/4e439d64-5c73-47f3-86f9-2398d30976c3)
 
-1. **엔티티 매니저 팩토리 생성**
+
+1. 엔티티 매니저 팩토리 생성
     
     `EntityManagerFactory emf = Persistence.createEntityManagerFactory("...");`
     
-    META-INF/persistence.xml에서 **persistence-unit**을 찾아서 엔티티 매니저 팩토리를 생성한다.
+    META-INF/persistence.xml에서 persistence-unit을 찾아서 엔티티 매니저 팩토리를 생성한다.
     
-    엔티티 매니저 팩토리는 애플리케이션 전체에서 **딱 한 번만 생성**하고 공유해서 사용해야 한다.
+    엔티티 매니저 팩토리는 애플리케이션 전체에서 딱 한 번만 생성하고 공유해서 사용해야 한다.
     
-2. **엔티티 매니저 생성**
+2. 엔티티 매니저 생성
     
     `EntityManager em = emf.createEntityManager();`
     
     엔티티 매니저 팩토리에서 엔티티 매니저를 생성한다.
     
-    엔티티 매니저는 **데이터베이스 커넥션과 밀접한 관계**가 있으므로 스레드 간에 공유하거나 재사용하면 안된다.
+    엔티티 매니저는 데이터베이스 커넥션과 밀접한 관계가 있으므로 스레드 간에 공유하거나 재사용하면 안된다.
     
-3. **종료**
+3. 종료
     
     `em.close()`, `emf.close()`
     
@@ -194,16 +189,16 @@ public class JpaMain {
 > JPA에서 제공하는 SQL을 추상화한 객체 지향 쿼리 언어이다.
 > 
 
-JPQL은 JPA를 사용하면서 **검색 조건이 포함된 SQL**이 필요할 때 사용한다.
+JPQL은 JPA를 사용하면서 검색 조건이 포함된 SQL이 필요할 때 사용한다.
 
 ### JPQL과 SQL
 
 JPQL은 SQL과 문법이 거의 유사해서 SELECT, FROM, WHERE, GROUP BY, HAVING, JOIN 등을 사용할 수 있다.
 
-**JQPL과 SQL의 차이**는 아래와 같다.
+JQPL과 SQL의 차이는 아래와 같다.
 
-- JPQL은 **엔티티 객체**를 대상으로 쿼리한다. 쉽게 말해 클래스와 필드를 대상으로 쿼리한다.
-- SQL은 **데이터베이스 테이블**을 대상으로 쿼리한다.
+- JPQL은 엔티티 객체를 대상으로 쿼리한다. 쉽게 말해 클래스와 필드를 대상으로 쿼리한다.
+- SQL은 데이터베이스 테이블을 대상으로 쿼리한다.
 
 ### 사용 방법
 
@@ -220,10 +215,11 @@ JPA는 JPQL을 분석해서 적절한 SQL을 만들어 데이터베이스에서 
 
 ## 엔티티 매니저 팩토리와 엔티티 매니저
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%208.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/35bb4c47-8cfb-4a38-9f68-c24a718c77c6)
+
 
 - 엔티티 매니저 팩토리는 고객(클라이언트)의 요청이 올 때마다 엔티티 매니저를 생성한다.
-    - 참고로, **앤티티 매니저 팩토리는 프로그램에서 한 번만 생성되고, 엔티티 매니저는 여러 번 생성**될 수 있다.
+    - 참고로, 앤티티 매니저 팩토리는 프로그램에서 한 번만 생성되고, 엔티티 매니저는 여러 번 생성될 수 있다.
 - 엔티티 매니저는 내부적으로 데이터베이스 커넥션을 사용해서 DB를 이용하게 된다.
     - 엔티티 매니저는 엔티티를 저장,수정,삭제,조회하는 등 엔티티와 관련된 일을 처리
 
@@ -231,15 +227,16 @@ JPA는 JPQL을 분석해서 적절한 SQL을 만들어 데이터베이스에서 
 
 - “엔티티를 영구 저장하는 환경”이라는 뜻
 - EntityManager.persist(entity);
-    - **persist()는 저장한다가 아니라, 영속성을 부여한다**는 뜻!
-    - **persist()는 실제로는 DB에 저장하는 것이 아닌, 영속성 컨텍스트라는 곳에 저장한다는 뜻!**
+    - persist()는 저장한다가 아니라, 영속성을 부여한다는 뜻!
+    - persist()는 실제로는 DB에 저장하는 것이 아닌, 영속성 컨텍스트라는 곳에 저장한다는 뜻!
 
 ## 엔티티 매니저와 영속성 컨텍스트
 
 - 영속성 컨텍스트는 논리적인 개념
 - 엔티티 매니저를 통해서 영속성 컨텍스트에 접근
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%209.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/6508fff9-6842-46e0-b0c3-8191f9990d21)
+
 
 ## 엔티티의 생명주기
 
@@ -251,7 +248,7 @@ JPA는 JPQL을 분석해서 적절한 SQL을 만들어 데이터베이스에서 
 
 ### 비영속
 
-- **엔티티 객체를 생성한 시점**의 상태
+- 엔티티 객체를 생성한 시점의 상태
 - 따라서 영속성 컨텍스트나 데이터베이스와 전혀 관련이 없음
 
 ```java
@@ -261,7 +258,7 @@ member.setId("member1");
 member.setUsername("회원1");
 ```
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2010.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/adba2961-b157-4b54-a9d6-4054968f66a0)
 
 ### 영속
 
@@ -273,7 +270,7 @@ member.setUsername("회원1");
 em.persist(member);
 ```
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2011.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/cbfbf26c-2cd7-4c37-93c2-baac0ec1cc7a)
 
 ### 준영속
 
@@ -292,12 +289,12 @@ em.persist(member);
 em.remove(member);
 ```
 
-## **영속성 컨텍스트의 특징**
+## 영속성 컨텍스트의 특징
 
 - 영속성 컨텍스트는 트랜잭션을 커밋하는 순간 SQL을 실행한다.
     - 즉, persist() 때에 SQL 실행하는 게 아니라, commit() 때 실행!!!
 
-## **영속성 컨텍스트가 필요한 이유**
+## 영속성 컨텍스트가 필요한 이유
 
 ### 영속성 컨텍스트의 이점
 
@@ -309,7 +306,7 @@ em.remove(member);
 
 ### 1차 캐시
 
-- **영속성 컨텍스트는 영속 상태의 엔티티를 관리하기 위해 내부 캐시를 가지고 있다. 이를 1차 캐시라 한다.**
+- 영속성 컨텍스트는 영속 상태의 엔티티를 관리하기 위해 내부 캐시를 가지고 있다. 이를 1차 캐시라 한다.
 - 1차 캐시를 쉽게 이야기하면 키는 @Id로 매핑한 필드, 값은 엔티티 인스턴스를 갖는 영속성 컨텍스트에 있는 Map이다.
 - 1차 캐시로 얻을 수 있는 이점은 있지만, 실제에서는 큰 이점으로 다가오지 않는다.
     - 고객의 요청에 대해 처리가 완료하여 엔티티 메니저를 삭제할 때 1차 캐시도 삭제하기 때문
@@ -320,13 +317,13 @@ em.remove(member);
 
 `em.find()`를 호출하면 일단 1차 캐시에서 식별자 값을 찾는다.
 
-만약 있다면 반환한다.**(이 경우 SQL을 실행하지 않는다.)**
+만약 있다면 반환한다.(이 경우 SQL을 실행하지 않는다.)
 
 1차 캐시에 없다면,  DB에서 조회 후 1차 캐시에 저장한 영속 상태의 엔티티를 반환한다.
 
 이후 똑같은 식별자 값의 엔티티를 조회할 경우 영속성 컨텍스트에서 반환하는 엔티티이기 때문에 동일성이 보장된다.
 
-여기까지 정리해보면 **영속성 컨텍스트는 내부 캐시를 갖고 있다. 이를 1차 캐시**라고 한다.
+여기까지 정리해보면 영속성 컨텍스트는 내부 캐시를 갖고 있다. 이를 1차 캐시라고 한다.
 
 `em.find()`를 수행하면 영속성 컨텍스트의 식별자에 해당하는 엔티티를 반환한다.
 
@@ -336,12 +333,12 @@ em.remove(member);
 
 이런 매커니즘으로 동작하여 SQL 실행을 줄여 성능상 이점을 갖고 엔티티 객체의 동일성을 보장한다.
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2012.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/4a85f462-50b4-4e47-a019-331cce0b3a8c)
 
 - 또한, 동일한 쿼리에 대해서 이미 1차 캐시에 동일한 것이 있다면, 비교할 때 true를 배출
 - 1차 캐시로 반복 가능한 읽기(REPEATABLE READ) 등급의 트랜잭션 격리 수준을 데이터베이스가 아닌 애플리케이션 차원에서 제공
 
-### **트랜잭션을 지원하는 쓰기 지연**
+### 트랜잭션을 지원하는 쓰기 지연
 
 ```java
 EntityManager em = emf.createEntityManager();
@@ -361,30 +358,30 @@ transaction.commit(); //[트랜잭션] 커밋
 
 일단 `em.persist(memberA);`를 수행하면 1차 캐시와 쓰기 지연 SQL 저장소에 MemberA에 해당하는 INSERT SQL을 저장한다.
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2013.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/9781a146-5699-4ce2-949a-9ccb84675607)
 
 그리고 `em.persist(memberB);`를 수행하면 1차 캐시와 쓰기 지연 SQL 저장소에 MemberB에 해당하는 INSERT SQL을 추가로 저장한다.
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2014.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/aa7ae12a-bebf-4cb3-8c3f-72fe9b36e7da)
 
-> **쓰기 지연 SQL 저장소**
+> 쓰기 지연 SQL 저장소
 > 
 > 
-> **영속성 컨텍스트는 1차 캐시 공간에 추가로 쓰기 지연 SQL 저장소를 가지고 있다.**
+> 영속성 컨텍스트는 1차 캐시 공간에 추가로 쓰기 지연 SQL 저장소를 가지고 있다.
 > 
 > 쓰기 지연 SQL 저장소는 DB에 등록해야될 엔티티 객체에 대한 INSERT 쿼리를 저장해둔다.
 > 
 
 마지막으로 트랜잭션을 커밋(`transaction.commit()`)할 때 쓰기 지연 SQL 저장소에 있는 SQL을 플러시한 뒤에 transaction 커밋을 수행한다.
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2015.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/a049faa4-7018-4a2e-9e0a-26f3e5b730cd)
 
-> **플러시**
+> 플러시
 > 
 > 
 > 영속성 컨텍스트의 변경 내용을 데이터베이스에 동기화하는 작업이다.
 > 
-> 이때 등록, 수정, 삭제한 엔티티에 대한 **SQL을 데이터베이스**에 보낸다.
+> 이때 등록, 수정, 삭제한 엔티티에 대한 SQL을 데이터베이스에 보낸다.
 > 
 
 위 과정처럼 `em.persist()`를 수행할 때 매번 SQL을 전달하는게 아니라 `transaction.commit()`을 수행할 때 SQL을 전달한다.
@@ -413,12 +410,12 @@ transaction.commit(); //[트랜잭션] 커밋
 - 엔티티 수정 상황 코드를 예로 든다.
 - 위 코드를 실행하면 영속성 컨텍스트는 아래 과정을 수행
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2016.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/d49870cb-3f18-441e-aef6-c3ecc76543a5)
 
-> 1차 캐시에 **스냅샷**이 추가되었다.
+> 1차 캐시에 스냅샷이 추가되었다.
 > 
 > 
-> **스냅샷이란 엔티티를 영속성 컨텍스트에 보관할 때, 최초 상태를 복사해서 저장해둔 것**이다.
+> 스냅샷이란 엔티티를 영속성 컨텍스트에 보관할 때, 최초 상태를 복사해서 저장해둔 것이다.
 > 
 > 스냅샷은 플러시 시점에 스냅샷과 엔티티를 비교해서 변경된 엔티티를 찾을 때 이용한다.
 > 
@@ -429,7 +426,7 @@ transaction.commit(); //[트랜잭션] 커밋
 4. 쓰기 지연 저장소의 SQL을 데이터베이스에 보낸다.
 5. 데이터베이스 트랜잭션을 커밋한다.
 
-> **주의사항!**
+> 주의사항!
 > 
 > 
 > 변경 감지는 영속성 컨텍스트가 관리하는 영속 상태의 엔티티에만 적용된다.
@@ -439,9 +436,9 @@ transaction.commit(); //[트랜잭션] 커밋
 
 위 과정을 통해 JPA는 엔티티 변경사항을 데이터베이스에 자동으로 반영
 
-🙂 **변경 감지 기본 전략**
+🙂 변경 감지 기본 전략
 
-**JPA의 변경 감지 기본 전략은 엔티티의 모든 필드를 업데이트한다는 것이다.**
+JPA의 변경 감지 기본 전략은 엔티티의 모든 필드를 업데이트한다는 것이다.
 
 아래의 엔티티 객체와 값을 변경하는 코드를 예로 보자.
 
@@ -496,19 +493,19 @@ WHERE
 
 변경 감지를 정리해보면 업데이트를 코드를 따로 작성하지 않아도 된다.
 
-**1차 캐시에서 스냅샷 비교를 통해 update sql을 생성해주기 때문이다.**
+1차 캐시에서 스냅샷 비교를 통해 update sql을 생성해주기 때문이다.
 
-**다만 변경 감지의 대상은 영속 상태 엔티티이다.**
+다만 변경 감지의 대상은 영속 상태 엔티티이다.
 
-J**PA는 기본 전략으로 UPDATE SQL에 모든 필드를 포함한다.**
+JPA는 기본 전략으로 UPDATE SQL에 모든 필드를 포함한다.
 
 이유는 수정 쿼리가 항상 같고 데이터베이스가 파싱된 쿼리를 재사용할 수 있다는 장점이 있기 때문이다.
 
 ## 플러시
 
-**플러시는 영속성 컨텍스트의 변경 내용을 데이터베이스에 반영**한다.
+플러시는 영속성 컨텍스트의 변경 내용을 데이터베이스에 반영한다.
 
-**중요한 점은 플러시를 수행한다고 해서 기존 캐시가 없어지는 것은 아니다!**
+중요한 점은 플러시를 수행한다고 해서 기존 캐시가 없어지는 것은 아니다!
 
 ### 플러시 수행 과정
 
@@ -534,7 +531,7 @@ J**PA는 기본 전략으로 UPDATE SQL에 모든 필드를 포함한다.**
 > 준영속 상태란 영속성 컨텍스트가 관리하는 영속 상태의 엔티티가 영속성 컨텍스트에서 분리된 것이다.
 > 
 > 
-> **준영속 엔티티는 영속성 컨텍스트가 제공하는 기능을 사용할 수 없다.**
+> 준영속 엔티티는 영속성 컨텍스트가 제공하는 기능을 사용할 수 없다.
 > 
 
 ### 준영속 상태로 만드는 방법
@@ -545,7 +542,7 @@ J**PA는 기본 전략으로 UPDATE SQL에 모든 필드를 포함한다.**
 - `em.clear()`: 영속성 컨텍스트를 완전히 초기화한다.
 - `em.close()`: 영속성 컨텍스트를 종료한다.
 
-### **엔티티를 준영속 상태로 전환: detach()**
+### 엔티티를 준영속 상태로 전환: detach()
 
 ```java
 public void testDetached() {
@@ -569,11 +566,11 @@ public void testDetached() {
 
 `em.detach(member)`를 호출하면 영속성 컨텍스트에 detach(memberA)를 전달한다.
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2017.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/536aaf7b-06b6-4d57-a119-d8769d7030c3)
 
 그러면 영속성 컨텍스트는 아래의 과정으로 memberA에 대한 정보를 삭제한다.
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2018.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/07008378-ca3a-4e7c-8d9a-86db28771053)
 
 과정은 아래와 같다.
 
@@ -581,9 +578,9 @@ public void testDetached() {
 2. 1차 캐시에 memberA에 대한 정보를 제거한다.
 3. 쓰기 지연 SQL 저장소에서 memberA에 관련된 SQL을 제거한다.
 
-이렇게 **영속 상태에서 영속석 컨텍스트가 관리하지 않는 상태를 준영속 상태**라고 한다.
+이렇게 영속 상태에서 영속석 컨텍스트가 관리하지 않는 상태를 준영속 상태라고 한다.
 
-### **영속성 컨텍스트 초기화: clear()**
+### 영속성 컨텍스트 초기화: clear()
 
 `em.detach()`가 특정 엔티티 하나를 준영속 상태로 만들었다면 `em.clear()`는 영속성 컨텍스트를 초기화해서 해당 영속성 컨텍스트의 모든 엔티티를 준영속 상태로 만든다.
 
@@ -599,11 +596,9 @@ member.setUsername("changeName");
 
 위 코드를 실행하면 영속성 컨텍스트 상태는 아래와 같이 변한다.
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2019.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/b11c9118-7759-4592-bb5d-765b3cff396a)
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2020.png)
-
-### **영속성 컨텍스트 종료: close()**
+### 영속성 컨텍스트 종료: close()
 
 영속성 컨텍스트를 종료하면 해당 영속성 컨텍스트가 관리하던 영속 상태의 엔티티가 모두 준영속 상태가 된다.
 
@@ -628,14 +623,12 @@ public void closeEntityManage() {
 
 위 코드를 실행하면 영속성 컨텍스트 상태는 아래와 같이 변한다.
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2021.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/3cd9ae65-14b6-4f33-a96e-88a3979564ac)
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2022.png)
-
-### **준영속 상태의 특징**
+### 준영속 상태의 특징
 
 - 거의 비영속 상태에 가깝다.
-    - 영속성 컨텍스트가 관리하지 않기 때문에 1차 캐시, 쓰기 지연, 변경 감지, 지연 로딩을 포함한 **영속성 컨텍스트가 제공하는 어떠한 기능도 동작하지 않는다.**
+    - 영속성 컨텍스트가 관리하지 않기 때문에 1차 캐시, 쓰기 지연, 변경 감지, 지연 로딩을 포함한 영속성 컨텍스트가 제공하는 어떠한 기능도 동작하지 않는다.
 - 식별자 값을 가지고 있다.
     - 비영속 상태는 식별자 값이 없을 수도 있지만 준영속 상태는 이미 한 번 영속 상태였으므로 반드시 식별자 값을 가지고 있다.
 - 지연 로딩을 할 수 없다.
@@ -659,7 +652,7 @@ public void closeEntityManage() {
 
 ### 주의사항
 
-**@Entity 적용 시 주의사항은 아래와 같다.**
+@Entity 적용 시 주의사항은 아래와 같다.
 
 - 기본 생성자가 꼭 존재해야 한다. (파라미터가 없는 public 또는 protected 생성자)
 - [final, enum, interface, inner] 클래스에 사용할 수 없다.
@@ -682,7 +675,7 @@ public void closeEntityManage() {
 - schema
 - uniqueConstraints
 
-**name**
+name
 
 - 매핑할 테이블 이름을 지정한다.
 - 생략하면 매핑한 엔티티 이름을 테이블 이름으로 사용한다.
@@ -717,11 +710,12 @@ public class Member {
 
 - 위의 경우에는 @Table(name="MBR")을 한 상황. 이 상태에서 프로그램을 실행하면 아래 결과가 나온다.
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2023.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/33f9a228-e98d-4fab-a87d-76e78de45286)
+
 
 - 보면 테이블명이 Member가 아닌 “MBR”로 나온다. 즉, DB의 “MBR”테이블에서 조회를 한 것!
 
-**uniqueConstraints**
+uniqueConstraints
 
 DDL 생성 시 유니크 제약조건을 만들고, 2개 이상의 복합 유니크 제약조건도 만들 수 있다.
 
@@ -743,7 +737,7 @@ public user {...}
 
 JPA는 데이터베이스 스키마를 자동으로 생성하는 기능을 지원한다.
 
-스키마 자동 생성 기능을 사용하면 **애플리케이션 실행 시점에 데이터베이스 테이블을 자동으로 생성**한다.
+스키마 자동 생성 기능을 사용하면 애플리케이션 실행 시점에 데이터베이스 테이블을 자동으로 생성한다.
 
 스키마 자동 생성 기능을 적용하려면 아래 코드를 persistence.xml의 property 부분에 추가하자.
 
@@ -752,20 +746,20 @@ JPA는 데이터베이스 스키마를 자동으로 생성하는 기능을 지�
 위 코드의 value 값으로 사용할 수 있는 속성은 아래와 같다.
 
 - create
-    - 기존 테이블을 삭제하고 새로 생성한다. **(DROP + CREATE)**
+    - 기존 테이블을 삭제하고 새로 생성한다. (DROP + CREATE)
     - 실행 예시
 - create-drop
-    - create 속성에 추가로 애플리케이션을 종료할 때 생성한 DDL을 제거한다. **(DROP + CREATE + DROP)**
+    - create 속성에 추가로 애플리케이션을 종료할 때 생성한 DDL을 제거한다. (DROP + CREATE + DROP)
 - update
     - 데이터베이스 테이블과 엔티티 매핑정보를 비교해서 변경 사항만 수정한다.
     - (column 삭제는 반영하지 않는다.)
 - validate
-    - 데이터베이스 테이블과 엔티티 매핑정보를 비교해서 **차이가 있으면 경고를 남기고 애플리케이션을 실행하지 않는다.**
+    - 데이터베이스 테이블과 엔티티 매핑정보를 비교해서 차이가 있으면 경고를 남기고 애플리케이션을 실행하지 않는다.
 - none
     - 자동 생성 기능을 사용하지 않는다. (자동 생성 기능을 사용하지 않는 또 다른 방법은 `<property name="hibernate.hbm2ddl.auto" value="..."/>` 속성 자체를 삭제하면 된다.
     - 그냥 주석 처리한 거랑 똑같음
 
-> **주의사항!**
+> 주의사항!
 > 
 > 
 > 운영 서버에서 create, create-drop, update 처럼 DDL을 수정하는 옵션은 절대 사용하면 안 된다. (애시당초 DB 계정을 분리시켜야한다.)
@@ -777,7 +771,7 @@ DDL 생성 기능은 DDL을 자동 생성할 때만 사용된다.
 
 (`hibernate.hbm2ddl.auto`가 create, create-drop, update에서만 동작한다.)
 
-그리고 **JPA의 실행 로직에는 영향을 주지 않는다**.
+그리고 JPA의 실행 로직에는 영향을 주지 않는다.
 
 ### #1. nullable, length 설정
 
@@ -853,7 +847,7 @@ public class Member {
     - `@Enumerated`는 *STRING*, *ORDINAL* 이렇게 2가지가 있다.
         - STRING은 enum 타입의 이름을 사용한다.
         - ORDINAL은 enum 타입에서 순서를 사용한다.
-    - 김영한 님은 **ORDINAL이 아닌 STRING을 활용할 것을 추천**했다!
+    - 김영한 님은 ORDINAL이 아닌 STRING을 활용할 것을 추천했다!
         - 왜냐하면, 숫자로 보면 뭐가 뭔지도 모르기도 하고, 필드(?)의 범위가 늘어나면 뭐가 뭔지 모르자너…
 - @Transient
     - 이 어노테이션이 적힌 필드는 db 컬럼에 매핑하지 않는다.
@@ -865,29 +859,29 @@ public class Member {
         - DDL 생성 기능에 영향을 주는 속성
             - nullable, unique, columnDefinition, length, precision, scale
 
-## **@Column 정리**
+## @Column 정리
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2024.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/570f89be-5a98-4f36-ae84-cdb5e0207f42)
 
-> **주의!**
+> 주의!
 > 
 > 
-> **자바 열거(enum) 타입을 매핑할 때는 반드시 STRING**을 사용하자.
+> 자바 열거(enum) 타입을 매핑할 때는 반드시 STRING을 사용하자.
 > 
 > STRING은 ORDINAL과 달리 순서가 바껴도 문제되지 않는다.
 > 
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2025.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/389212f1-e366-486e-82a6-d9633f734396)
 
 ## 기본 키 매핑
 
 JPA가 제공하는 데이터베이스 기본 키 생성 전략은 다음과 같다.
 
-- **직접 할당**
+- 직접 할당
     
     기본 키를 애플리케이션에서 직접 할당한다.
     
-- **자동 생성**
+- 자동 생성
     
     대리 키 사용 방식으로 3가지 전략이 있다.
     
@@ -954,9 +948,9 @@ JPA가 지원하는 기본 키 할당 전략은 크게 2가지로 나뉜다.
 
 기본 키를 직접 할당하기 위해선 `@Id`를 적용하면 된다.
 
-적용 방법은 **기본 키 적용 방법**과 같다.
+적용 방법은 기본 키 적용 방법과 같다.
 
-> **키 값을 지정하지 않으면 벌어지는 일!**
+> 키 값을 지정하지 않으면 벌어지는 일!
 > 
 > 
 > 키(식별자) 값 없이 저장하면 예외가 발생한다.
@@ -970,9 +964,9 @@ JPA가 지원하는 기본 키 할당 전략은 크게 2가지로 나뉜다.
 
 ### IDENTITY 전략
 
-**IDENTITY 전략은 기본 키 생성을 데이터베이스에 위임하는 전략**이다.
+IDENTITY 전략은 기본 키 생성을 데이터베이스에 위임하는 전략이다.
 
-주로 **MySQL**, PostgreSQL, SQL Server, DB2에 사용한다.
+주로 MySQL, PostgreSQL, SQL Server, DB2에 사용한다.
 
 사용 예는 아래와 같다.
 
@@ -998,7 +992,7 @@ private static void logic(EntityManager em) {
 > 참고
 > 
 > 
-> **IDENTITY 전략과 최적화**
+> IDENTITY 전략과 최적화
 > 
 > IDENTITY 전략은 데이터를 데이터베이스 INSERT한 후에 기본 키 값을 조회할 수 있다.
 > 
@@ -1012,7 +1006,7 @@ private static void logic(EntityManager em) {
 > 주의
 > 
 > 
-> **IDENETITY 전략은 쓰기 지연 불가**
+> IDENETITY 전략은 쓰기 지연 불가
 > 
 > 엔티티가 영속 상태가 되려면 식별자가 반드시 필요하다.
 > 
@@ -1023,9 +1017,9 @@ private static void logic(EntityManager em) {
 
 ### SEQUENCE 전략
 
-**데이터베이스 시퀀스는 유일한 값을 순서대로 생성하는 특별한 데이터베이스 오브젝트다.**
+데이터베이스 시퀀스는 유일한 값을 순서대로 생성하는 특별한 데이터베이스 오브젝트다.
 
-주로 **오라클**, PostgreSQL, DB2, **H2 데이터베이스**에서 사용할 수 있다.
+주로 오라클, PostgreSQL, DB2, H2 데이터베이스에서 사용할 수 있다.
 
 사용 예는 아래와 같다.
 
@@ -1057,7 +1051,7 @@ private static void logic(EntityManager em) {
 // 출력 : board.id = 1
 ```
 
-**@SequenceGenerator 속성 정리**
+@SequenceGenerator 속성 정리
 
 | 속성 | 기능 | 기본값 |
 | --- | --- | --- |
@@ -1067,14 +1061,14 @@ private static void logic(EntityManager em) {
 | allocationSize | 시퀀스 한 번 호출에 증가하는 수(성능 최적화에 사용됨) | 50 |
 | catalog, schema | 데이터베이스 catalog, schema 이름 |  |
 
-> **참고**
+> 참고
 > 
 > 
-> **SEQUNCE 전략과 최적화**
+> SEQUNCE 전략과 최적화
 > 
 > SEQUENCE 전략은 데이터베이스 시퀀스를 통해 식별자를 조회하는 추가 작업이 필요하다.
 > 
-> 따라서 **데이터베이스와 2번 통신**한다.
+> 따라서 데이터베이스와 2번 통신한다.
 > 
 > 1. 식별자를 구하려고 데이터베이스 시퀀스를 조회한다.
 > 2. 조회한 시퀀스를 기본 키 값으로 사용해 데이터베이스에 저장한다.
@@ -1086,7 +1080,7 @@ private static void logic(EntityManager em) {
 > 예를들면 allocationSize 값이 10이면 시퀀스를 한 번에 10 증가시킨 다음에 1~10까지는 메모리에서 식별자를 할당한다.
 > 
 
-> **IDENTITY 방식과 SEQUENCE 방식의 차이**
+> IDENTITY 방식과 SEQUENCE 방식의 차이
 > 
 > 
 > SEQUENCE 전략은 em.persist()를 호출할 때 먼저 데이터베이스 시퀀스를 사용해서 식별자를 조회한다.
@@ -1100,7 +1094,7 @@ private static void logic(EntityManager em) {
 
 ### TABLE 전략
 
-TABLE 전략은 **키 생성 전용 테이블을 하나 만들고 여기에 이름과 값으로 사용할 컬럼을 만들어 데이터베이스 시퀀스와 비슷한 전략**이다.
+TABLE 전략은 키 생성 전용 테이블을 하나 만들고 여기에 이름과 값으로 사용할 컬럼을 만들어 데이터베이스 시퀀스와 비슷한 전략이다.
 
 이 방식은 테이블을 사용하므로 모든 데이터베이스에 적용할 수 있다.
 
@@ -1145,10 +1139,10 @@ private static void logic(EntityManager em) {
 | catalog, schema | 데이터베이스 catalog, schema 이름 |  |
 | uniqueConstraints(DDL) | 유니크 제약 조건을 지정할 수 있다. |  |
 
-> **참고**
+> 참고
 > 
 > 
-> **Table 전략과 최적화**
+> Table 전략과 최적화
 > 
 > TABLE 전략은 값을 조회하면서 SELECT 쿼리를 사용하고 다음 값으로 증가시키기 위해 UPDATE 쿼리를 사용한다. 이 전략은 SEQUENCE 전략과 비교해서 데이터베이스와 한 번 더 통신하는 단점이 있다. (즉, 데이터베이스와 총 3번 통신)
 > 
@@ -1182,7 +1176,7 @@ private static void logic(EntityManager em) {
 
 ### 그래서 식별자는 뭐로 해?
 
-결론은 **자연 키보다는 대리 키를 권장**한다.
+결론은 자연 키보다는 대리 키를 권장한다.
 
 비즈니스 환경은 언젠가 변할 수 있기 때문에 모든 엔티티에 일관된 방식으로 대리 키 사용을 권장한다.
 
@@ -1192,7 +1186,7 @@ private static void logic(EntityManager em) {
 
 ## 객체지향 설계의 목표
 
-- **객체지향 설계의 목표는 자율적인 객체들의 협력 공동체를 만드는 것!!!**
+- 객체지향 설계의 목표는 자율적인 객체들의 협력 공동체를 만드는 것!!!
 
 ## 단방향 연관관계
 
@@ -1204,24 +1198,24 @@ private static void logic(EntityManager em) {
 
 위 그림을 분석해보자.
 
-- **객체 연관관계**
+- 객체 연관관계
     
     회원 객체는 Member.team 필드로 팀 객체와 연관관계를 맺는다.
     
-    회원 객체와 팀 객체는 **단방향 관계**이다. 회원은 Member.team 필드를 통해서 팀을 알 수 있지만 반대로 팀은 회원을 알 수 없다.
+    회원 객체와 팀 객체는 단방향 관계이다. 회원은 Member.team 필드를 통해서 팀을 알 수 있지만 반대로 팀은 회원을 알 수 없다.
     
-- **테이블 연관관계**
+- 테이블 연관관계
     
     회원 테이블은 TEAM_ID 외래 키로 팀 테이블과 연관관계를 맺는다.
     
-    회원 테이블과 팀 테이블은 **양방향 관계**이다. 회원 테이블의 TEAM_ID 외래 키를 통해서 회원과 팀을 조인할 수 있고 반대로 팀과 회원도 조인할 수 있다.(JOIN 사용)
+    회원 테이블과 팀 테이블은 양방향 관계이다. 회원 테이블의 TEAM_ID 외래 키를 통해서 회원과 팀을 조인할 수 있고 반대로 팀과 회원도 조인할 수 있다.(JOIN 사용)
     
 
-> **외래 키를 이용한 양방향 조인**
+> 외래 키를 이용한 양방향 조인
 > 
 > 
 > 
-> **(회원과 팀을 조인하는 SQL)**
+> (회원과 팀을 조인하는 SQL)
 > 
 > SELECT *
 > 
@@ -1229,7 +1223,7 @@ private static void logic(EntityManager em) {
 > 
 > JOIN TEAM T ON M.TEAM_ID = T.TEAM_ID
 > 
-> **(팀과 회원을 조인하는 SQL)**
+> (팀과 회원을 조인하는 SQL)
 > 
 > SELECT *
 > 
@@ -1238,38 +1232,38 @@ private static void logic(EntityManager em) {
 > JOIN MEMBER M ON T.TEAM_ID = M.TEAM_ID
 > 
 
-그림을 통해서 **테이블은 외래 키를 통해 양방향으로 조회가 가능하지만 객체는 단방향으로만 조회**가 가능한 것을 알 수 있다.
+그림을 통해서 테이블은 외래 키를 통해 양방향으로 조회가 가능하지만 객체는 단방향으로만 조회가 가능한 것을 알 수 있다.
 
-만약 **객체 간에 연관관계를 양방향으로 만들려면 반대쪽에도 필드를 추가**해야 한다. (정확히는 단방향 2개를 만든다.)
+만약 객체 간에 연관관계를 양방향으로 만들려면 반대쪽에도 필드를 추가해야 한다. (정확히는 단방향 2개를 만든다.)
 
-## **@ManyToOne, @JoinColumn 속성 정리**
+## @ManyToOne, @JoinColumn 속성 정리
 
 ### @ManyToOne
 
 - 다대일(N:1) 관계 매핑 정보이다. 연관관계를 매핑할 때 이렇게 다중성을 나타내는 어노테이션을 명시해야 한다.
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2026.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/0e2f707a-1e61-4ad4-8f93-2a6149bed9d0)
 
 ### @JoinColumn
 
 - 조인 컬럼은 외래키를 매핑할 때 사용한다.
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2027.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/c5e1eabd-80e4-45e4-9736-65e742f29e5c)
 
 ## 양방향 연관관계
 
-![https://velog.velcdn.com/images%2Fhansoleee%2Fpost%2Fc5af445f-8574-455b-bc49-3b3e8d509e3e%2F%EC%96%91%EB%B0%A9%ED%96%A5%EB%A7%A4%ED%95%9101.png](https://velog.velcdn.com/images%2Fhansoleee%2Fpost%2Fc5af445f-8574-455b-bc49-3b3e8d509e3e%2F%EC%96%91%EB%B0%A9%ED%96%A5%EB%A7%A4%ED%95%9101.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/3ff851c0-1629-47f6-a64c-6f064159c441)
 
-일단 **테이블 연관관계는 단방향 연관관계 때와 달라진건 없다.**
+일단 테이블 연관관계는 단방향 연관관계 때와 달라진건 없다.
 
-객체 연관관계에서 **Team 객체에 필드로 회원 List가 추가**되었다.
+객체 연관관계에서 Team 객체에 필드로 회원 List가 추가되었다.
 
 이로써 객체도 양방향 참조가 가능하다.
 
 - 회원 → 팀 (Member.team)
 - 팀 → 회원 (Team.members)
 
-> **참고**
+> 참고
 > 
 > 
 > JPA는 List를 포함해서 Collection, Set, Map 같은 다양한 컬렉션을 지원한다.
@@ -1287,59 +1281,60 @@ private static void logic(EntityManager em) {
 
 결론부터 말하면 `mappedBy`는 연관관계의 주인이 아니라는 설정이다.
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2028.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/2693f461-88b8-4359-9a1a-fe501b22b9bc)
 
 위 이미지를 보면, 객체 관점에서 양방향 연관관계는 단방향 2개로 이루어진다. (팀 → 회원, 회원 → 팀)
 
 그리고 테이블에서 양방향 연관관계는 외래 키로 관리된다. (회원 ↔ 팀)
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2029.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/c018872c-79d1-4c56-8c34-ea84247f59e3)
 
 위 이미지에서 테이블 연관관계를 보면, 여기서 외래 키는 하나인데 객체 참조는 두 포인트가 발생한다. 따라서 둘 사이에 차이가 발생한다. >>> 즉, Member에는 “Team team”이 있고, Team에는 “List member”가 있는데, 이 자체는 테이블 연관관계와 다른점이 발생한다.
 
-❓ **그렇다면 외래 키 관리는 Member와 Team 객체 중 어디서 담당할까?**
+❓ 그렇다면 외래 키 관리는 Member와 Team 객체 중 어디서 담당할까?
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2030.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/6957fa4e-367f-4517-9ca5-d1ff2cf81319)
+
 
 만약, Member 자체에서 team 필드가 바뀐다거나(즉, 멤버 일원의 팀이 변경) 또는 Team에서 member가 바뀐다면 어떻게 해야 할까? 
 
 규칙을 정하지 않는다면, DB나 쿼리가 매우 꼬이게 될 것이다. 그래서 정해진 규칙은 다음과 같다.
 
-기본적으로 외래키를 관리하는 테이블을 매핑한 엔티티가 외래 키를 담당하도록 한다. 이 때 외래 키를 담당하는 엔티티를 **연관관계의 주인**이라 한다. >>> 즉, 여기서는 Member가 주인이 된다!
+기본적으로 외래키를 관리하는 테이블을 매핑한 엔티티가 외래 키를 담당하도록 한다. 이 때 외래 키를 담당하는 엔티티를 연관관계의 주인이라 한다. >>> 즉, 여기서는 Member가 주인이 된다!
 
 ### 양방향 매핑의 규칙: 연관관계의 주인
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2031.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/757c2d47-5d37-4ea3-8e9e-2d48998ef97e)
 
 양방향 연관관계 매핑은 반드시 두 연관관계 중 하나를 연관관계 주인으로 정해야 한다.
 
-**연관관계의 주인만이 데이터베이스 연관관계와 매핑되고 외래 키를 관리(등록, 수정, 삭제)할 수 있다. 반면에 주인이 아닌 엔티티는 읽기만 할 수 있다.**
+연관관계의 주인만이 데이터베이스 연관관계와 매핑되고 외래 키를 관리(등록, 수정, 삭제)할 수 있다. 반면에 주인이 아닌 엔티티는 읽기만 할 수 있다.
 
 그리고 어떤 연관관계를 주인으로 정할지는 `mappedBy` 속성을 사용하면 된다.
 
 - 주인은 `mappedBy` 속성을 사용하지 않는다.
 - 주인이 아니면 `mappedBy` 속성을 사용해서 속성의 값으로 연관관계의 주인을 지정해야 한다.
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2032.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/a1b02f40-3fc6-465b-918b-8fd762dc501e)
 
 > 연관관계의 주인은 외래 키 관리자가 된다.
 > 
 
-> **참고**
+> 참고
 > 
 > 
-> 데이터베이스 테이블의 **다대일, 일대다 관계에서는 항상 다 쪽이 외래키를 갖는다.** 다 쪽인 @ManyToOne은 항상 연관관계의 주인이 되므로 `mappedBy`를 설정할 수 없다. 따라서 @ManyToOne에는 mappedBy 속성이 없다.
+> 데이터베이스 테이블의 다대일, 일대다 관계에서는 항상 다 쪽이 외래키를 갖는다. 다 쪽인 @ManyToOne은 항상 연관관계의 주인이 되므로 `mappedBy`를 설정할 수 없다. 따라서 @ManyToOne에는 mappedBy 속성이 없다.
 > 
 
 ## 연관관계 편의 메소드
 
-양방향 연관관계는 결국 양쪽 엔티티에 값을 넣어줘야 한다. 따라서 도메인에서 외래 키를 설정할 때 상대쪽에도 값을 넣을 수 있도록 하나의 기능으로 처리하자. (이를 **연관관계 편의 메소드**라고 한다.)
+양방향 연관관계는 결국 양쪽 엔티티에 값을 넣어줘야 한다. 따라서 도메인에서 외래 키를 설정할 때 상대쪽에도 값을 넣을 수 있도록 하나의 기능으로 처리하자. (이를 연관관계 편의 메소드라고 한다.)
 
 ![https://velog.velcdn.com/images%2Fhansoleee%2Fpost%2Fa929a6d0-c331-416e-98e6-57ce728ffb5e%2F%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84%ED%8E%B8%EC%9D%98%EB%A9%94%EC%86%8C%EB%93%9C01.png](https://velog.velcdn.com/images%2Fhansoleee%2Fpost%2Fa929a6d0-c331-416e-98e6-57ce728ffb5e%2F%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84%ED%8E%B8%EC%9D%98%EB%A9%94%EC%86%8C%EB%93%9C01.png)
 
 ### 연관관계 편의 메소드 작성 시 주의사항
 
-연관관계 편의 메소드를 사용할 때 **주의**할 점은 연관관계 엔티티를 수정할 때 반드시 기존 엔티티에서 제거하고 새로운 엔티티로 설정해야한다.
+연관관계 편의 메소드를 사용할 때 주의할 점은 연관관계 엔티티를 수정할 때 반드시 기존 엔티티에서 제거하고 새로운 엔티티로 설정해야한다.
 
 ![https://velog.velcdn.com/images%2Fhansoleee%2Fpost%2Ffef936ec-addd-4b43-a02b-4e037ebc2eb8%2F%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84%ED%8E%B8%EC%9D%98%EB%A9%94%EC%86%8C%EB%93%9C%EC%A3%BC%EC%9D%98%EC%82%AC%ED%95%AD01.png](https://velog.velcdn.com/images%2Fhansoleee%2Fpost%2Ffef936ec-addd-4b43-a02b-4e037ebc2eb8%2F%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84%ED%8E%B8%EC%9D%98%EB%A9%94%EC%86%8C%EB%93%9C%EC%A3%BC%EC%9D%98%EC%82%AC%ED%95%AD01.png)
 
@@ -1365,9 +1360,9 @@ member1은 team2과 연관관계를 맺도록 수정했지만 `team1.getMembers
 
 엔티티의 연관관계를 매핑할 때는 아래 3가지를 고려해야 한다.
 
-- **다중성 (일대일? 일대다?)**
-- **단방향, 양방향**
-- if 참조 관계가 양방향일 경우 → **연관관계의 주인**
+- 다중성 (일대일? 일대다?)
+- 단방향, 양방향
+- if 참조 관계가 양방향일 경우 → 연관관계의 주인
 
 먼저 두 엔티티의 관계가 일대일인지 일대다인지 다중성을 고려해야 한다. 그리고 두 엔티티 중 한쪽만 참조하는 단방향 관계인지 서로 참조하는 양방향 관계인지 고려해야 한다. 마지막으로 양방향 관계면 연관관계의 주인을 정해야 한다.
 
@@ -1400,8 +1395,8 @@ member1은 team2과 연관관계를 맺도록 수정했지만 `team1.getMembers
 
 - 테이블은 외래 키 하나로 두 테이블이 연관관계를 맺음
 - 객체 양방향 관계는 A->B, B->A 처럼 참조가 2군데
-- **객체 양방향 관계**는 참조가 2군데 있음. 둘중 테이블의 외래 키를 관리할 곳을 지정해야함
-- 연관관계의 주인: **외래 키를 관리하는 객체**
+- 객체 양방향 관계는 참조가 2군데 있음. 둘중 테이블의 외래 키를 관리할 곳을 지정해야함
+- 연관관계의 주인: 외래 키를 관리하는 객체
 - 주인의 반대편: 외래 키에 영향을 주지 않음, 단순 조회만 가능
 
 외래 키를 관리하는 대상을 연관관계 주인이라 한다. JPA는 양방향 관계에서 연관관계 주인을 정하는데 `mappedBy` 속성을 사용한다. (`mappedBy`를 사용하지 않으면 연관관계의 주인이고, 사용하면 연관관계의 주인이 아니다.)
@@ -1441,7 +1436,7 @@ private Team team;
 
 ### 다대일 양방향 (N:1, 1:N)
 
-다대일 양방향의 객체 연관관계에서 **실선이 연관관계의 주인이고 점선은 연관관계의 주인이 아니다.**
+다대일 양방향의 객체 연관관계에서 실선이 연관관계의 주인이고 점선은 연관관계의 주인이 아니다.
 
 ![https://velog.velcdn.com/images%2Fhansoleee%2Fpost%2F217338e3-cd84-497c-91aa-cb6ba27f9ef6%2F%EB%8B%A4%EB%8C%80%EC%9D%BC%EC%96%91%EB%B0%A9%ED%96%A501.png](https://velog.velcdn.com/images%2Fhansoleee%2Fpost%2F217338e3-cd84-497c-91aa-cb6ba27f9ef6%2F%EB%8B%A4%EB%8C%80%EC%9D%BC%EC%96%91%EB%B0%A9%ED%96%A501.png)
 
@@ -1449,27 +1444,27 @@ private Team team;
 
 ![https://velog.velcdn.com/images%2Fhansoleee%2Fpost%2F7c1fe63e-d2f0-4a24-9b9e-1f93d2bd9d63%2F%EB%8B%A4%EB%8C%80%EC%9D%BC%EC%96%91%EB%B0%A9%ED%96%A5%EC%BD%94%EB%93%9C02.png](https://velog.velcdn.com/images%2Fhansoleee%2Fpost%2F7c1fe63e-d2f0-4a24-9b9e-1f93d2bd9d63%2F%EB%8B%A4%EB%8C%80%EC%9D%BC%EC%96%91%EB%B0%A9%ED%96%A5%EC%BD%94%EB%93%9C02.png)
 
-**양방향은 외래 키가 있는 쪽이 연관관계의 주인**이다. 일대다와 다대일 관계가 있다면 항상 다에 외래 키가 있다. JPA는 외래 키를 관리할 때 연관관계의 주인만 사용한다. **주인이 아닌 Team.member는 조회를 위한 JPQL이나 객체 그래프를 탐색할 때 사용**한다.
+양방향은 외래 키가 있는 쪽이 연관관계의 주인이다. 일대다와 다대일 관계가 있다면 항상 다에 외래 키가 있다. JPA는 외래 키를 관리할 때 연관관계의 주인만 사용한다. 주인이 아닌 Team.member는 조회를 위한 JPQL이나 객체 그래프를 탐색할 때 사용한다.
 
-양방향 연관관계는 항상 서로를 참조해야 한다. 어느 한 쪽만 참조하면 양방향 연관관계가 성립하지 않는다. 항상 서로를 참조하도록 연관관계 편의 메소드 작성을 권장한다. **(예제에 Member의 joinTeam(), Team의 addMember()가 연관관계 편의 메소드이다.)**
+양방향 연관관계는 항상 서로를 참조해야 한다. 어느 한 쪽만 참조하면 양방향 연관관계가 성립하지 않는다. 항상 서로를 참조하도록 연관관계 편의 메소드 작성을 권장한다. (예제에 Member의 joinTeam(), Team의 addMember()가 연관관계 편의 메소드이다.)
 
-> **주의!**
+> 주의!
 > 
 > 
-> **연관관계 편의 메소드는 한 곳에만 작성하거나 양쪽에 작성할 수 있다.**
+> 연관관계 편의 메소드는 한 곳에만 작성하거나 양쪽에 작성할 수 있다.
 > 
-> **만약 양쪽에 작성한다면 무한루프에 빠지지 않도록 주의해야 한다.**
+> 만약 양쪽에 작성한다면 무한루프에 빠지지 않도록 주의해야 한다.
 > 
 > 예제는 무한루프에 빠지지 않도록 검사가하는 로직을 작성했다.
 > 
 
 ## 일대다 (@OneToMany)
 
-일대다 관계는 엔티티를 하나 이상 참조할 수 있으므로 **자바 컬렉션인 Collection, List, Set, Map 중에 하나를 사용**해야 한다.
+일대다 관계는 엔티티를 하나 이상 참조할 수 있으므로 자바 컬렉션인 Collection, List, Set, Map 중에 하나를 사용해야 한다.
 
-**참고로 실무에서는 일대다 자체를 안쓰는 게 좋다!**
+참고로 실무에서는 일대다 자체를 안쓰는 게 좋다!
 
-- **매핑한 객체가 관리하는 외래 키가 다른 테이블에 있는 단점**
+- 매핑한 객체가 관리하는 외래 키가 다른 테이블에 있는 단점
     - 본인 테이블에 외래 키가 있으면 엔티티의 저장과 연관관계 처리를 INSERT SQL 한 번으로 끝낼 수 있지만, 다른 테이블에 외래 키가 있다면 연관관계 처리를 위한 UPDATE SQL을 추가로 실행해야 한다.
         - 따라서, 일대다가 아닌, 다대일을 사용해야 함!
 
@@ -1479,7 +1474,7 @@ private Team team;
 - 주 테이블이나 대상 테이블 중에 외래 키 선택 가능
 - 주 테이블에 외래 키
 - 대상 테이블에 외래 키
-- **외래 키에 데이터베이스 유니크(UNI) 제약조건 추가**
+- 외래 키에 데이터베이스 유니크(UNI) 제약조건 추가
 
 일대일 관계에서 외래 키는 주 테이블이나 대상 테이블 둘 중 어느 곳이나 외래 키를 가질 수 있다. (다대일은 항상 다쪽이 외래 키를 갖는다.)
 
@@ -1599,7 +1594,7 @@ JPA에서 일대일 관계 중 대상 테이블에 외래 키가 있는 단방�
 
 ### 다대다 정리
 
-- **다대다는 실무에서 절대로 사용하면 안된다!**
+- 다대다는 실무에서 절대로 사용하면 안된다!
 
 ---
 
@@ -1607,7 +1602,7 @@ JPA에서 일대일 관계 중 대상 테이블에 외래 키가 있는 단방�
 
 ## 상속 관계 매핑
 
-**관계형 데이터베이스는 객체지향 언어에서 다루는 상속이라는 개념이 없다. 대신 슈퍼타입 서브타입 관계 (Super-Type Sub-Type Relationship)라는 모델링 기법이 객체의 상속 개념과 가장 유사하다.** 
+관계형 데이터베이스는 객체지향 언어에서 다루는 상속이라는 개념이 없다. 대신 슈퍼타입 서브타입 관계 (Super-Type Sub-Type Relationship)라는 모델링 기법이 객체의 상속 개념과 가장 유사하다. 
 
 ORM에서 이야기하는 상속 관계 매핑은 객체의 상속 구조와 데이터베이스의 슈퍼타입 서브타입 관계를 매핑하는 것이다.
 
@@ -1624,30 +1619,30 @@ ORM에서 이야기하는 상속 관계 매핑은 객체의 상속 구조와 데
 
 ## 상속 관계 매핑 - 1. 조인 전략
 
-조인 전략은 **엔티티 각각을 모두 테이블로 만들고 자식 테이블이 부모 테이블의 기본 키를 받아서 기본 키 + 외래 키로 사용하는 전략**이다.
+조인 전략은 엔티티 각각을 모두 테이블로 만들고 자식 테이블이 부모 테이블의 기본 키를 받아서 기본 키 + 외래 키로 사용하는 전략이다.
 
 ![https://velog.velcdn.com/images%2Fhansoleee%2Fpost%2Fb79d6b12-7b38-48c3-ba69-9e6a89d84dd7%2F%EC%A1%B0%EC%9D%B8%EC%A0%84%EB%9E%B501.png](https://velog.velcdn.com/images%2Fhansoleee%2Fpost%2Fb79d6b12-7b38-48c3-ba69-9e6a89d84dd7%2F%EC%A1%B0%EC%9D%B8%EC%A0%84%EB%9E%B501.png)
 
 ### 특징
 
-- 조회할 때 **조인**을 자주 사용한다.
+- 조회할 때 조인을 자주 사용한다.
     - 부모 테이블의 기본 키를 받아서 기본 키 + 외래 키를 사용하는 전략이기 때문에 조회할 때 조인을 자주 사용한다.
 - 타입을 구분하는 컬럼을 추가한다.
     - 객체는 타입으로 구분할 수 있지만 테이블은 타입의 개념이 없기 때문에 타입 구분을 위한 칼럼을 추가한다.
 - 실무
-    - **데이터도 많고, 비즈니스적으로도 중요하고, 발전 가능성도 높을 경우 이 전략 채택**
+    - 데이터도 많고, 비즈니스적으로도 중요하고, 발전 가능성도 높을 경우 이 전략 채택
 
 ### 장점
 
-- 테이블이 **정규화**된다.
-- **외래 키 참조 무결성 제약조건**을 활용할 수 있다.
-- **저장 공간을 효율적**으로 사용한다.
+- 테이블이 정규화된다.
+- 외래 키 참조 무결성 제약조건을 활용할 수 있다.
+- 저장 공간을 효율적으로 사용한다.
 
 ### 단점
 
-- 조회할 때 **조인이 많이 사용되므로 성능이 저하**될 수 있다.
-- **조회 쿼리가 복잡**하다.
-- 데이터를 등록할 **INSERT SQL을 두 번 실행**한다.
+- 조회할 때 조인이 많이 사용되므로 성능이 저하될 수 있다.
+- 조회 쿼리가 복잡하다.
+- 데이터를 등록할 INSERT SQL을 두 번 실행한다.
 
 ### 예제
 
@@ -1786,22 +1781,20 @@ public class jpaMain {
 
 ### 결과
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2033.png)
-
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2034.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/28ba1bd5-1cc7-4235-a9b4-6e56ecee2972)
 
 - insert를 2번 하게 된다. Item, Movie에게 각각 한번씩 한다.
 - @DiscriminatorColumn 을 통해서 DType이 현재 어떤 자식 클래스의 데이터를 담고있는 지 알려준다.
 
 ## 주요 어노테이션
 
-- **@Inheritance(strategy = InherianceType.JOINED)**
+- @Inheritance(strategy = InherianceType.JOINED)
     - 상속 매핑은 부모 클래스에 @Inheritance를 사용해야 한다. 그리고 매핑 전략을 지정한다. 여기서는 조인 전략을 사용하므로 strategy 속성으로 InheritanceType.JOINED를 설정했다.
-- **@DiscriminatorColumn(name = "DTYPE")**
+- @DiscriminatorColumn(name = "DTYPE")
     - 부모 클래스에 구분 컬럼을 지정한다. 이 컬럼으로 저장된 자식 테이블을 구분할 수 있다. (기본값은 DTYPE이다.)
-- **@DiscriminatorValue("M")**
+- @DiscriminatorValue("M")
     - 엔티티를 저장할 때 구분 컬럼에 입력할 값을 지정한다. 만약 Movie 엔티티를 저장하면 구분 컬럼인 DTYPE에 `M`이 저장된다.
-- **@PrimaryKeyJoinColumn(name = "book_id")**
+- @PrimaryKeyJoinColumn(name = "book_id")
     - 자식 테이블의 기본 키 컬럼명을 지정한다. Book 엔티티에 기본 키 + 외래 키의 컬럼명은 `book_id`로 된다.
 
 ## 상속 관계 매핑 - 2. 단일 테이블 전략
@@ -1812,16 +1805,16 @@ public class jpaMain {
 
 - 구분 컬럼을 통해 저장된 타입을 구분한다.구분 컬럼(`@DiscriminatorColumn`)을 반드시 사용한다.
 - 실무
-    - **데이터 수도 적고, 발전 가능성도 없을 때 이 전략을 많이 채택**
+    - 데이터 수도 적고, 발전 가능성도 없을 때 이 전략을 많이 채택
 
 ### 장점
 
-- 조인이 필요 없으므로 일반적으로 **조회 성능이 빠르다.**
-- **조회 쿼리가 단순**하다.
+- 조인이 필요 없으므로 일반적으로 조회 성능이 빠르다.
+- 조회 쿼리가 단순하다.
 
 ### 단점
 
-- **자식 엔티티가 매핑한 컬럼은 모두 null을 허용해야 한다.**
+- 자식 엔티티가 매핑한 컬럼은 모두 null을 허용해야 한다.
 - 단일 테이블에 모든 것을 저장하므로 테이블이 커질 수 있다. (상황에 따라 조회 성능이 느려질 수 있다.)
     - 하지만, 이게 발생할 확률은 적다.
 
@@ -1848,9 +1841,9 @@ public class abstract Item { // 고급 매핑 // Item 클래스는 추상화 해
 }
 ```
 
-- **@Inheritance(strategy = InherianceType.SINGLE_TABLE)**
+- @Inheritance(strategy = InherianceType.SINGLE_TABLE)
     - 단일 테이블 전략을 사용하므로 strategy 속성으로 InheritanceType.SINGLE_TABLE을 설정했다.
-- **@DiscriminatorColumn 생략 가능**
+- @DiscriminatorColumn 생략 가능
     - 단일 테이블 전략에서는 사용 안해도 됨(알아서 DTYPE 생성)
         - 알아서 DTYPE 생성하는 이유
             - 내가 Ablum인지 Movie인지 뭔지 구분을 할 수가 없기 때문
@@ -1859,7 +1852,8 @@ public class abstract Item { // 고급 매핑 // Item 클래스는 추상화 해
 
 ![https://velog.velcdn.com/images%2Fhansoleee%2Fpost%2Fdf34a48f-05ea-434d-971d-03efa1fd8493%2F%EB%8B%A8%EC%9D%BC%ED%85%8C%EC%9D%B4%EB%B8%94%EC%8B%A4%ED%96%89%EA%B2%B0%EA%B3%BC01.png](https://velog.velcdn.com/images%2Fhansoleee%2Fpost%2Fdf34a48f-05ea-434d-971d-03efa1fd8493%2F%EB%8B%A8%EC%9D%BC%ED%85%8C%EC%9D%B4%EB%B8%94%EC%8B%A4%ED%96%89%EA%B2%B0%EA%B3%BC01.png)
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2035.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/332d156b-d880-49dd-ac48-8eb2eb48ec74)
+
 
 - Item 테이블이 만들어지고 컬럼으로 Item, Album, Book, Movie 엔티티에 작성한 속성 값이 모두 들어간다.
 
@@ -1872,10 +1866,10 @@ public class abstract Item { // 고급 매핑 // Item 클래스는 추상화 해
 ### 특징
 
 - 구분 컬럼을 사용하지 않는다.
-- @DiscriminatorColumn 이 동작하지 않는다. -> **테이블이 이미 다 다르니 의미가 없다.**
+- @DiscriminatorColumn 이 동작하지 않는다. -> 테이블이 이미 다 다르니 의미가 없다.
 - Item 테이블을 없애 버리고 거기있는 속성들을 다 밑으로 내리는 것이다.
     - 하지만 Item으로 조회를 할 때에는 union으로 모든 테이블을 가져오게 된다. 각 테이블(movie, book ,album) 명으로 조회할 때는 문제 없긴 하다.
-- **실무에서는 절대 사용하면 안된다!!!**
+- 실무에서는 절대 사용하면 안된다!!!
 
 ### 장점
 
@@ -1919,7 +1913,7 @@ Item 엔티티에 매핑되는 테이블은 생성되지 않는다. 하지만 It
 
 ## @MappedSuperclass
 
-`**@MappedSuperclass`는 부모 클래스를 테이블과 매핑하지 않고 부모 클래스를 상속받는 자식 클래스에게 매핑 정보만 제공한다. (실제 테이블과 매핑되지 않는다.)**
+`@MappedSuperclass`는 부모 클래스를 테이블과 매핑하지 않고 부모 클래스를 상속받는 자식 클래스에게 매핑 정보만 제공한다. (실제 테이블과 매핑되지 않는다.)
 
 ![https://velog.velcdn.com/images%2Fhansoleee%2Fpost%2F2112f46b-cc1e-4dce-98e8-90dde841d0b4%2FMappedSuperclass01.png](https://velog.velcdn.com/images%2Fhansoleee%2Fpost%2F2112f46b-cc1e-4dce-98e8-90dde841d0b4%2FMappedSuperclass01.png)
 
@@ -1929,7 +1923,7 @@ Item 엔티티에 매핑되는 테이블은 생성되지 않는다. 하지만 It
 - 엔티티 X, 테이블과 매핑 X
 - 부모 클래스를 상속 받는 자식 클래스에 매핑 정보만 제공
 - 조회, 검색 불가(em.find(BaseEntity) 불가)
-- 직접 생성해서 사용할 일이 없으므로 **추상 클래스 권장**
+- 직접 생성해서 사용할 일이 없으므로 추상 클래스 권장
 - 테이블과 관계 없고, 단순히 엔티티가 공통으로 사용하는 매핑 정보를 모으는 역할
 - 주로 등록일, 수정일, 등록자, 수정자 같은 전체 엔티티에서 공통으로 적용하는 정보를 모을 때 사용
 - 참고
@@ -1960,12 +1954,12 @@ public abstract class BaseEntity { // 동일한 속성에 대해서 상속을 �
 }
 ```
 
-- **@MappedSuperclass**
+- @MappedSuperclass
     - 매핑 정보만 받는 슈퍼(부모) 클래스임을 의미
-- **BaseEntity 클래스**
+- BaseEntity 클래스
     - 동일한 속성에 대해서 상속을 해준다.
     - BaseEntity에 해당하는 테이블은 생성되지 않고 상속받은 객체들에게 매핑 정보만 제공한다.
-- **abstract 키워드**
+- abstract 키워드
     - 직접 생성해서 사용할 일이 없으므로 추상 클래스 권장
 
 `Member.java`
@@ -2057,16 +2051,14 @@ public class jpaMain {
 
 `결과`
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2036.png)
-
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2037.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/d8362d16-7990-4242-9c0a-5b9f6d366997)
 
 - BaseEntity에 들어가 있는 속성을 상속받아 Member 테이블이 생성된 것을 알 수 있다.
     - INSERT_MEMBER나 UPDATE_MEMBER 처럼 @Column(name = “지정속성명") 을 한 것이 잘 반영됐음을 알 수 있다.
 - extend를 해준 Member 를 살펴보면 도메인에는 적혀있지 않던 createdBy ~ lastModifiedDate 까지 생겼다.
-    - 한마디로 같이 쓰고 싶은 속성을 **중복 없이 쓸 수 있게 해준다.**
+    - 한마디로 같이 쓰고 싶은 속성을 중복 없이 쓸 수 있게 해준다.
         - 만약, 이렇게 안했다면 각 클래스 파일마다 동일한 속성을 만들어서 사용했어야겠지?
-- **BaseEntity는 테이블과 관계 없고, 단순히 엔티티가 공통으로 사용하는 매핑정보를 모으는 역할**
+- BaseEntity는 테이블과 관계 없고, 단순히 엔티티가 공통으로 사용하는 매핑정보를 모으는 역할
     - 주로 등록일, 수정일 , 등록자, 수정자, 같은 전체 엔티티에서 공통으로 적용하는 정보를 모을 때 사용 >>> 실무에서도 많이 사용됨!
 
 ---
@@ -2078,9 +2070,9 @@ public class jpaMain {
 ### 프록시 기초
 
 - em.find() vs em.getReference()
-- em.find() : **데이터베이스를 통해서 실제 엔티티 객체 조회**
+- em.find() : 데이터베이스를 통해서 실제 엔티티 객체 조회
     - 즉, 진짜로 객체를 준다.
-- em.getReference() : **데이터베이스 조회를 미루는 가짜(프록시) 엔티티 객체 조회**
+- em.getReference() : 데이터베이스 조회를 미루는 가짜(프록시) 엔티티 객체 조회
     - 진짜 객체가 아닌, 하이버네이트 내부에 있는 라이브러리를 사용해 가짜인 프록시 객체를 준다.
 
 ![https://blog.kakaocdn.net/dn/pvGtR/btrtVn7X745/ZDp99wcVE2zhz49GtnQQz1/img.png](https://blog.kakaocdn.net/dn/pvGtR/btrtVn7X745/ZDp99wcVE2zhz49GtnQQz1/img.png)
@@ -2134,26 +2126,26 @@ public static void logic(EntityManager em) {
     }
 ```
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2038.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/051388cb-fe97-45c8-ba20-e0871011c820)
 
 - findMember에서 “HibernateProxy”가 나온 것을 볼 수 있다.
 
 ## 프록시 초기화
 
-[https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F515b9790-43af-4db8-8183-f41743988af6%2F_2020-06-17__8.08.24.png&blockId=483c549f-960f-49fc-940e-213800498424](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F515b9790-43af-4db8-8183-f41743988af6%2F_2020-06-17__8.08.24.png&blockId=483c549f-960f-49fc-940e-213800498424)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/1d90ead9-dae5-4f36-bd0f-96fb663c830d)
 
 ```java
 Member member = em.getRefernce(Member.class, "id1");//(1)
 member.getName(); //(2)
 ```
 
-- 코드 라인에서 **getReference()를 호출하면 프록시 객체를 가져온 다음, getName()을 호출하면 JPA가 영속성 컨텍스트에 초기화 요청**을 한다.
+- 코드 라인에서 getReference()를 호출하면 프록시 객체를 가져온 다음, getName()을 호출하면 JPA가 영속성 컨텍스트에 초기화 요청을 한다.
 - 영속성 컨텍스트에서는 실제 db를 조회해서 가져온 이후, 실제 Entity에 값을 넣어 생성한 다음, 프록시 객체는 실제 엔티티를 연결해서 실제 엔티티를 반환한다.
 - 그 이후에는 이미 초기화 되어 있는 프록시 객체이기에 해당 엔티티를 반환한다.
 
 ## 프록시의 특징
 
-[https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc735bfb1-0081-47c3-a841-afe5d863cc2b%2F_2020-06-17__8.05.35.png&blockId=5af6c4ea-2afa-4711-8479-b6b1dd21eddc](https://oopy.lazyrockets.com/api/v2/notion/image?src=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc735bfb1-0081-47c3-a841-afe5d863cc2b%2F_2020-06-17__8.05.35.png&blockId=5af6c4ea-2afa-4711-8479-b6b1dd21eddc)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/61034b42-58b7-4d0c-a047-1099a246a7ee)
 
 - 실제 클래스를 상속받아서 만들어짐
 - 실제 클래스와 겉 모양이 같다.
@@ -2161,7 +2153,7 @@ member.getName(); //(2)
 - 프록시 객체는 실제 객체의 참조(target)를 보관한다.
 - 프록시 객체를 호출(getName())하면 프록시 객체는 실제 객체의 메소드 호출
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2039.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/e7517ef7-7904-4b6b-8cf3-411a27dd9bc3)
 
 1) 프록시는 처음 사용할 때 한 번만 초기화
 
@@ -2206,7 +2198,7 @@ m1 instanceof Member // true
 m3 instanceof Member // true
 ```
 
-- 위 코드와 같이, 프록시 객체는 원본 엔티티를 상속받음, 따라서 타입 체크시 주의해야함( ==비교 실패, 대신 **instance of** 사용)
+- 위 코드와 같이, 프록시 객체는 원본 엔티티를 상속받음, 따라서 타입 체크시 주의해야함( ==비교 실패, 대신 instance of 사용)
 
 ```java
 Member m1 = em.find(Member.class, member1.getId());
@@ -2246,7 +2238,7 @@ public static void logic(EntityManager em) {
     }
 ```
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2040.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/5a24f2e5-4edb-45a0-b29f-fd95ed75342c)
 
 - 반대로 위 코드와 같이 getReference()로 프록시 객체를 가지고 있으면 실제로 find()를 했을 때도 프록시 객체를 반환.
 
@@ -2264,7 +2256,7 @@ refMember.getUsername(); //org.hibernate.LazyInitializationException
 
 ## 프록시 확인
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2041.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/ce91355d-900d-4e9d-a101-0c211dfe7b95)
 
 ### 프록시 인스턴스의 초기화 여부 확인
 
@@ -2363,19 +2355,17 @@ public static void logic(EntityManager em) {
 
 ## 지연 로딩
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2042.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/170505ee-85d8-4a92-9742-62605c70bbef)
 
 → Member 정보만 사용하는 비즈니스 로직이라면 굳이 같이 조회할 필요 없음
 
 - 이런 경우
-    - **지연로딩 LAZY를 사용해서 프록시로 조회**
+    - 지연로딩 LAZY를 사용해서 프록시로 조회
     - 실제 Team을 사용하는 시점에 초기화 (DB 조회)
 
 ## 지연 로딩 원리
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2043.png)
-
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2044.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/2262a559-0bad-4534-bd8e-f35d67f0f1cb)
 
 - 즉, Member와 Team이 함께 사용될 일이 거의 없다면, 따로 구분했다가 Team이 필요한 경우에만 초기화를 통해 DB 조회 실행하면 된다.
 - 근데, 만약 Member와 Team이 함께 사용될 일이 많다면 어떻게 해야 할까?
@@ -2443,23 +2433,21 @@ public static void logic(EntityManager em) {
 
 ### 실행 결과
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2045.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/2b55ff68-1500-4521-ab0f-607992823085)
+
 
 - proxy를 통해서 생성된 이후, 초기화를 할 때 SQL 쿼리가 나간다는 것을 알 수 있다.
 
 ## 즉시 로딩
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2046.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/b5b48863-48c5-4373-9fa7-cc48de728659)
+
 
 - 둘이 한 번에 자주 사용된다면 “즉시” 로딩 기법을 사용하도록 하자!
 
 ### 원리
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2047.png)
-
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2048.png)
-
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2049.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/03d9fdf4-d920-475f-8d5f-d978d1c29c7b)
 
 ### 즉시 로딩 코드
 
@@ -2522,18 +2510,19 @@ public static void logic(EntityManager em) {
 
 `실행 결과`
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2050.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/a1b7aa4e-10be-4cc7-8d54-cab87f88a87a)
+
 
 - 지연 로딩과 달리, 즉시 로딩은 처음부터 join을 통해서 가져오기 때문에 proxy가 필요 없다.
 - `m = class [hellojpa.Team](http://hellojpa.Team)` 를 통해서 proxy가 아닌 진짜 객체가 들어가 있는 것을 알 수 있다.
-- 하지만, **실무에서는 즉시 로딩 방법을 기피**해야 한다!
+- 하지만, 실무에서는 즉시 로딩 방법을 기피해야 한다!
 
 ### 프록시와 즉시로딩 주의점
 
-- **가급적, 지연 로딩만 사용(특히 실무에서)**
+- 가급적, 지연 로딩만 사용(특히 실무에서)
 - 즉시로딩을 적용하면 예상하지 못한 SQL이 발생
-    - **즉시로딩은 JPQL에서 N+1 문제를 일으킴**
-- **@ManyToOne, @OneToOne은 기본이 즉시 로딩 → 따라서, LAZY로 설정해줘야 한다!!!**
+    - 즉시로딩은 JPQL에서 N+1 문제를 일으킴
+- @ManyToOne, @OneToOne은 기본이 즉시 로딩 → 따라서, LAZY로 설정해줘야 한다!!!
 - @OneToMany, @ManyToMany는 기본이 지연로딩
 - 한 번에 조회해야 할 때는 fetch join 사용!
 
@@ -2547,9 +2536,9 @@ public static void logic(EntityManager em) {
 
 `지연 로딩 활용 -실무`
 
-- **모든 연관관계에 지연로딩을 사용해라!**
+- 모든 연관관계에 지연로딩을 사용해라!
 - 실무에서 즉시로딩을 사용하지 마라!
-- **JPQL fetch 조인이나, 엔티티 그래프 기능을 사용해라!**
+- JPQL fetch 조인이나, 엔티티 그래프 기능을 사용해라!
 - 즉시 로딩은 예상치 못한 쿼리가 나간다!
 
 ## 영속성 전이(CASCADE)
@@ -2559,7 +2548,7 @@ public static void logic(EntityManager em) {
 - 특정 엔티티를 영속 상태로 만들 때 연관된 엔티티도 함께 영속 상태로 만들고 싶을 때 사용
     - 예: 부모 엔티티를 저장할 때 자식 엔티티도 함께 저장
 - 객체 저장시, 객체의 연관관계도 함께 저장하고 싶을 때 사용
-- **하나의 부모만이 해당 자식 객체를 관리할 때는 사용 가능. 하지만 그 자식 객체를 여러군데에서 관리하고, 연관관계가 맺어있을 때는 문제가 발생. 즉, 소유자가 하나일 때만 사용하기**→ (1) 단일 엔티티에 종속적일 때. (2) 라이프사이클이 거의 유사할 때 사용
+- 하나의 부모만이 해당 자식 객체를 관리할 때는 사용 가능. 하지만 그 자식 객체를 여러군데에서 관리하고, 연관관계가 맺어있을 때는 문제가 발생. 즉, 소유자가 하나일 때만 사용하기→ (1) 단일 엔티티에 종속적일 때. (2) 라이프사이클이 거의 유사할 때 사용
 
 ![https://blog.kakaocdn.net/dn/wo7VR/btrtTLVy7zV/tIalnumoA5y0yXZopdj8KK/img.png](https://blog.kakaocdn.net/dn/wo7VR/btrtTLVy7zV/tIalnumoA5y0yXZopdj8KK/img.png)
 
@@ -2569,16 +2558,16 @@ public static void logic(EntityManager em) {
 @OneToMany(mappedBy = "parent", cascade = CascadeType.PERSIST)
 ```
 
-### **주의점**
+### 주의점
 
-- 영속성 전이는 연관관계를 매핑하는 것과 **아무 관련이 없음**
+- 영속성 전이는 연관관계를 매핑하는 것과 아무 관련이 없음
 - 엔티티를 영속화할 때, 연관된 엔티티도 함께 영속화하는 편리함을 제공할 뿐
 
-### **CASCADE의 종류**
+### CASCADE의 종류
 
-- **ALL : 모두 적용**
-- **PERSIST : 영속**
-- **REMOVE : 삭제**
+- ALL : 모두 적용
+- PERSIST : 영속
+- REMOVE : 삭제
 - MERGE : 병합
 - REPRESH : REFRESH
 - DETACH : DETACH
@@ -2664,18 +2653,20 @@ public static void logic(EntityManager em) {
 
 `실행 결과`
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2051.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/00d633d1-c581-4802-96e8-ab368f710fa2)
+
 
 - jpaMain에서 persist는 1번밖에 안했는데, 실행 결과에서는 insert가 3개 된 것을 알 수 있다.
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2052.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/6ca9e7c7-aac8-40f3-97a6-d3d50a39fd0e)
+
 
 - DB에도 결과가 잘 들어간 것을 확인할 수 있다.
 
 ## 고아 객체
 
-- **고아 객체 제거 : 부모 엔티티와 연관관계가 끊어진 자식 엔티티를 자동으로 삭제**
-- **orphanRemoval = true**
+- 고아 객체 제거 : 부모 엔티티와 연관관계가 끊어진 자식 엔티티를 자동으로 삭제
+- orphanRemoval = true
 
 ```java
 Parent parent = em.find(Parent.class, id);
@@ -2747,27 +2738,28 @@ public static void logic(EntityManager em) {
 
 `실행 결과`
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2053.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/bc363a29-c270-435c-a07c-8c656b17e397)
+
 
 - Parent와 더불어서 child들도 같이 delete된 것을 알 수 있다.
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2054.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/74449606-35fb-496a-b246-dfbfb688e8cd)
 
 - DB에도 Parent나 child 모두 사라진 것을 알 수 있다.
 
-### **고아 객체 - 주의점**
+### 고아 객체 - 주의점
 
 - 참조가 제거된 엔티티는 다른 곳에서 참조하지 않는 고아 객체로 보고 삭제하는 기능
-- **참조하는 곳이 하나일 때 사용해야 함!**
-- **특정 엔티티가 개인 소유할 때 사용**
+- 참조하는 곳이 하나일 때 사용해야 함!
+- 특정 엔티티가 개인 소유할 때 사용
 - @OneToOne, @OneToMany만 가능
 - 참고 : 개념적으로 부모를 제거하면 자식은 고아가 된다. 따라서 고아 객체 제거 기능을 활성화하면, 부모를 제거할 때 자식도 함께 제거된다. 이것은 CascadeType.REMOVE처럼 동작한다.
 
 ### 영속성 전이 + 고아 객체, 생명주기
 
-- **CascadeType.ALL + orphanRemoval=True**
+- CascadeType.ALL + orphanRemoval=True
 - 스스로 생명주기를 관리하는 엔티티는 em.persist()로 영속화, em.remove()로 제거
-- **두 옵션을 모두 활성화하면 부모 엔티티를 통해서 자식의 생명주기를 관리할 수 있음**
+- 두 옵션을 모두 활성화하면 부모 엔티티를 통해서 자식의 생명주기를 관리할 수 있음
 - 도메인 주도 설계(TDD)의 Aggregate Root개념을 구현할 때 유용
     - → Aggregate Root : DB는 Aggregate Root를 통해서 접근하는 개념
 
@@ -2778,30 +2770,30 @@ public static void logic(EntityManager em) {
 ### 엔티티 타입
 
 - @Entity로 정의하는 객체
-- **데이터가 변해도 식별자(pk)로 지속해서 추적 가능**
+- 데이터가 변해도 식별자(pk)로 지속해서 추적 가능
 - 예) 회원 엔티티의 키나 나이 값을 변경해도 식별자로 인식 가능
 
 ### 값 타입
 
 - int, Integer, String처럼 단순히 값으로 사용하는 자바 기본 타입이나 객체
-- **식별자가 없고 값만 있으므로 변경시 추적 불가**
+- 식별자가 없고 값만 있으므로 변경시 추적 불가
 - 예) 숫자 100을 200으로 변경하면 완전히 다른 값으로 대체
 
 `값 타입 분류`
 
-- **기본값 타입**
+- 기본값 타입
     - 자바 기본 타입(int, double)
     - 래퍼 클래스(Integer, Long)
     - String
-- **임베디드 타입(embedded type, 복합 값 타입)**
-- **컬렉션 값 타입(collection value type)**
+- 임베디드 타입(embedded type, 복합 값 타입)
+- 컬렉션 값 타입(collection value type)
 
 ## 기본값 타입
 
 - 예): String name, int age
-- **생명주기를 엔티티에 의존**
+- 생명주기를 엔티티에 의존
     - 예) 회원을 삭제하면 이름, 나이 필드도 함께 삭제
-- **값 타입은 공유하면 X**
+- 값 타입은 공유하면 X
     - 예) 회원 이름 변경시 다른 회원의 이름도 함께 변경되면 안됨
 
 ### 참고: 자바의 기본 타입은 절대 공유X
@@ -2812,16 +2804,16 @@ public static void logic(EntityManager em) {
 
 ## 임베디드 타입
 
-- **새로운 값 타입을 직접 정의할 수 있음**
+- 새로운 값 타입을 직접 정의할 수 있음
 - JPA는 임베디드 타입(embedded type)이라 함
-- 주로 기본 값 타입을 모아서 만들어서 **복합 값 타입**이라고도 함
+- 주로 기본 값 타입을 모아서 만들어서 복합 값 타입이라고도 함
 - int, String과 같은 값 타입
 
 ### 사용법
 
-- **@Embeddable : 값 타입을 정의하는 곳에 표시**
-- **@Embedded : 값 타입을 사용하는 곳에 표시**
-- **기본 생성자 필수**
+- @Embeddable : 값 타입을 정의하는 곳에 표시
+- @Embedded : 값 타입을 사용하는 곳에 표시
+- 기본 생성자 필수
 
 ### 장점
 
@@ -2833,12 +2825,12 @@ public static void logic(EntityManager em) {
 ### 테이블 매핑
 
 - 임베디드 타입은 엔티티의 값일 뿐이다
-- 임베디드 타입을 사용하기 전과 후에 **매핑하는 테이블은 같다**
+- 임베디드 타입을 사용하기 전과 후에 매핑하는 테이블은 같다
 - 임베디드 타입의 값이 null이면 매핑한 컬럼 값은 모두 null
 - 객체와 테이블을 아주 세밀하게(fine-grained) 매핑하는 것이 가능
 - 잘 설계한 ORM 애플리케이션은 매핑한 테이블의 수보다 클래스의 수가 더 많음
 
-### **@AttributeOverride > 속성 재정의**
+### @AttributeOverride > 속성 재정의
 
 - 한 엔티티에서 임베디드 타입에 있는 것과 같은 값 타입을 사용하면?
     - 컬럼명이 중복됨
@@ -2846,15 +2838,18 @@ public static void logic(EntityManager em) {
 
 `예시 설계`
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2055.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/e06e1fc0-d825-4140-a0df-242d45225170)
+
 
 `상세한 설계`
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2056.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/802bc18c-7fa9-480b-b642-8bbc6799830f)
+
 
 `추상화한 설계`
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2057.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/39d8c0e8-d435-49d6-9117-a572210721f1)
+
 
 - 추상화한 설계 부분에 대해 실제 Java에서는 위와 같이 설계한다.
 
@@ -2961,7 +2956,8 @@ public class Member { // 속성에 대해서 BaseEntity에서 상속 >>> 임베�
 
 `실행 결과`
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2058.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/4b565da6-5bdf-4ee6-91f0-4d0c359843e0)
+
 
 - 원하는 대로 DB는 생성되고, java 자체는 java 답게 프로그래밍된 것을 알 수 있다.
 
@@ -2976,16 +2972,16 @@ public class Member { // 속성에 대해서 BaseEntity에서 상속 >>> 임베�
 - 임베디드 타입 같은 값 타입을 여러 엔티티에서 공유하면 위험함
 - 부작용(side effect) 발생
 
-**값타입들은 기본적으로 공유를 하면 안됩니다.** 예를 들어 다른 회원의 나이가 변경되었다고 다른 회원의 이름도 변경되면 안된다는 말입니다.
+값타입들은 기본적으로 공유를 하면 안됩니다. 예를 들어 다른 회원의 나이가 변경되었다고 다른 회원의 이름도 변경되면 안된다는 말입니다.
 
-**기본값 타입**의 **기본 타입**은 애초에 값을 복사하기 때문에 공유를 할 수 없습니다. 하지만 **래퍼클래스나 String**은 참조값을 복사하기 때문에 공유가 가능하지만 수정이 불가능하기때문에 괜찮습니다.
+기본값 타입의 기본 타입은 애초에 값을 복사하기 때문에 공유를 할 수 없습니다. 하지만 래퍼클래스나 String은 참조값을 복사하기 때문에 공유가 가능하지만 수정이 불가능하기때문에 괜찮습니다.
 
 ### 값 타입 복사
 
 - 값 타입의 실제 인스턴스인 값을 공유하는 것은 위험
 - 대신 값(인스턴스)를 복사해서 사용
 
-**임베디드 타입**은 직접 정의한 객체타입이기 때문에 기본값 타입과는 다르게 **공유가 가능하고 수정 또한 가능해서 유의**해야 합니다. 
+임베디드 타입은 직접 정의한 객체타입이기 때문에 기본값 타입과는 다르게 공유가 가능하고 수정 또한 가능해서 유의해야 합니다. 
 
 ### 객체 타입의 한계
 
@@ -3026,23 +3022,26 @@ public static void logic(EntityManager em) {
 
 (실행 결과)
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2059.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/d3e33b60-e976-4d77-b68c-8ffe16fb3d46)
+
 
 원치 않던 m2의 도시 값도 함께 바뀐 것을 알 수 있다.
 
-![https://velog.velcdn.com/images%2Frmswjdtn%2Fpost%2F244df0bf-984e-4c26-8a84-971997f81590%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-02-01%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%205.31.46.png](https://velog.velcdn.com/images%2Frmswjdtn%2Fpost%2F244df0bf-984e-4c26-8a84-971997f81590%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-02-01%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%205.31.46.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/2fcec575-a876-47db-b6f8-84c09ff0c1bf)
+
 
 ### 불변 객체
 
-- **객체 타입을 수정할 수 없게 만들면, 부작용을 원천 차단!**
+- 객체 타입을 수정할 수 없게 만들면, 부작용을 원천 차단!
 - 값 타입은 불변 객체(immutable object)로 설계해야 함
 - 불변 객체: 생성 시점 이후 절대 값을 변경할 수 없는 객체
 - 생성자로만 값을 설정하고 수정자(Setter)를 만들지 않으면 됨
 - 참고: Integer, String은 자바가 제공하는 대표적인 불변 객체
 
-**side effect**는 오류를 찾기도 매우 까다롭기 때문에, 이런 문제를 막기 위해서는 같은 값이라도 임베디드 타입의 각각 **기본값 타입들을 복사해서 넘겨주는 방식**을 취해야 합니다.
+side effect는 오류를 찾기도 매우 까다롭기 때문에, 이런 문제를 막기 위해서는 같은 값이라도 임베디드 타입의 각각 기본값 타입들을 복사해서 넘겨주는 방식을 취해야 합니다.
 
-![https://velog.velcdn.com/images%2Frmswjdtn%2Fpost%2F952c2b29-a973-4926-a3b8-a8f016d1616b%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-02-01%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%205.41.09.png](https://velog.velcdn.com/images%2Frmswjdtn%2Fpost%2F952c2b29-a973-4926-a3b8-a8f016d1616b%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-02-01%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%205.41.09.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/f8ba0c87-a878-4aca-af54-7bbe68ea79ec)
+
 
 이를 코드화한 방식은 아래와 같다.
 
@@ -3083,9 +3082,10 @@ public static void logic(EntityManager em) {
 
 (실행 결과)
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2060.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/3c894b59-30ca-4324-b470-2ecb05f2a839)
 
-또 다른 해결방법은 **불변객체로 만드는 것**입니다. 이는 생성시점 이후에 변경할 수 없는 객체로 String등이 이에 속합니다. 불변객체로 만드는 방법은 **setter를 정의하지 않거나 private로 정의하면 됩니다.**
+
+또 다른 해결방법은 불변객체로 만드는 것입니다. 이는 생성시점 이후에 변경할 수 없는 객체로 String등이 이에 속합니다. 불변객체로 만드는 방법은 setter를 정의하지 않거나 private로 정의하면 됩니다.
 
 ```java
     public String getCity() {
@@ -3113,12 +3113,12 @@ public static void logic(EntityManager em) {
     }
 ```
 
-이런 방법들을 통해 **불변이라는 작은 제약으로 부작용이라는 큰 재앙을 막을 수 있다.**
+이런 방법들을 통해 불변이라는 작은 제약으로 부작용이라는 큰 재앙을 막을 수 있다.
 
 ## 값 타입의 비교
 
-- **동일성(identity) 비교**: 인스턴스의 참조 값을 비교, == 사용
-- **동등성(equivalence) 비교**: 인스턴스의 값을 비교, equals() 사용
+- 동일성(identity) 비교: 인스턴스의 참조 값을 비교, == 사용
+- 동등성(equivalence) 비교: 인스턴스의 값을 비교, equals() 사용
 - 값 타입은 a.equals(b)를 사용해서 동등성 비교를 해야 함
 - 값 타입의 equals() 메소드를 적절하게 재정의(주로 모든 필드 사용)
 
@@ -3126,7 +3126,7 @@ public static void logic(EntityManager em) {
 
 - 인스턴스의 참조 값을 비교, == 사용
 
-**==** 을 이용해서 비교하는 방법이며 인스턴스의 **참조 값을 비교**합니다. 자바의 **기본타입**은 **값이 같으면 같은 공간**을 쓰기 때문에 아래와 같은 경우 최종적으로 b와 c는 같은 값, 같은 주소를 갖게 됩니다.
+== 을 이용해서 비교하는 방법이며 인스턴스의 참조 값을 비교합니다. 자바의 기본타입은 값이 같으면 같은 공간을 쓰기 때문에 아래와 같은 경우 최종적으로 b와 c는 같은 값, 같은 주소를 갖게 됩니다.
 
 ```java
 int a = 10;
@@ -3158,11 +3158,11 @@ c = 157627094
 
 - 인스턴스의 값을 비교, equals() 사용
 
-동등성 비교는 **인스턴스의 값을 비교**하는 것이며 **equals()**사용해서 판별합니다. 자바의 기본타입을 제외하고는 동등성 비교를 해줘야 값만 비교가 가능합니다.
+동등성 비교는 인스턴스의 값을 비교하는 것이며 equals()사용해서 판별합니다. 자바의 기본타입을 제외하고는 동등성 비교를 해줘야 값만 비교가 가능합니다.
 
-따라서 값 타입은 **자바의 기본타입을 제외하고는 모두 equals연산을 사용**해야하며 오브젝트 타입 같이 따로 정의해준 타입은 equals를 따로 정의해줘야합니다.
+따라서 값 타입은 자바의 기본타입을 제외하고는 모두 equals연산을 사용해야하며 오브젝트 타입 같이 따로 정의해준 타입은 equals를 따로 정의해줘야합니다.
 
-**Address같은 경우 이렇게 equals를 override해서 각각의 요소마다 비교**를 할 수 있도록 해야합니다.**(단축키 ctrl + insert -> equals and hashcode)**
+Address같은 경우 이렇게 equals를 override해서 각각의 요소마다 비교를 할 수 있도록 해야합니다.(단축키 ctrl + insert -> equals and hashcode)
 
 ```java
 @Override
@@ -3240,7 +3240,8 @@ public class Address {
 
 `실행 결과`
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2061.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/9dff2661-ac25-4d1c-b81e-aa1a48a83581)
+
 
 - 동일성 비교는 false가, 동등성 비교는 true가 나온 것을 알 수 있다.
 
@@ -3251,7 +3252,8 @@ public class Address {
 - 데이터베이스는 컬렉션을 같은 테이블에 저장할 수 없다.
 - 컬렉션을 저장하기 위한 별도의 테이블이 필요함
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2062.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/ca2faeeb-f7b1-4763-a597-b3d681f4a8ad)
+
 
 이거를 만들고자 함
 
@@ -3375,7 +3377,8 @@ INSERT INTOADDRESS(MEMBER_ID, CITY, STREET, ZIPCODE)VALUES (1, '서울', '강북
 
 ### 실행 결과
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2063.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/1acdb7cc-e42e-4b74-b4a4-f0ec7757fdf3)
+
 
 ## 값 타입 조회 예제
 
@@ -3427,15 +3430,17 @@ public static void logic(EntityManager em) {
 ```
 
 - 값 타입 컬렉션 지연 로딩 전략 사용 (default)
-    - **@ElementCollection(fetch = FetchType.LAZY)**
+    - @ElementCollection(fetch = FetchType.LAZY)
 
 ### 실행 결과
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2064.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/9e91c083-7426-4aa5-9536-fc6dff9c0634)
+
 
 => 컬렉션들은 지연로딩되는 것을 볼수있다. (컬렉션빼놓고 select 된다.)
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2065.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/6a8b78d4-7d02-44e6-bfdd-3542fbbf4922)
+
 
 ⇒ 조회 역시 잘 되는 것을 볼 수 있다.
 
@@ -3492,16 +3497,16 @@ public static void logic(EntityManager em) {
     }
 ```
 
-**1. 임베디드 값 타입 수정**
+1. 임베디드 값 타입 수정
 
 - member 테이블만 update한다. 사실 member 엔티티를 수정하는 것과 같다.
 
-**2. 기본값 타입 컬렉션 수정**
+2. 기본값 타입 컬렉션 수정
 
 - 탕수육을 치킨으로 변경하려면 탕수육을 제거하고 치킨을 추가해야 한다.
 - 자바의 String타입은 수정 불가능
 
-**3. 임베디드 값 타입 컬렉션 수정**
+3. 임베디드 값 타입 컬렉션 수정
 
 - 값 타입은 불변해야 한다. 따라서 컬렉션에서 기존 주소를 삭제하고 새로운 주소를 등록했다.
 
@@ -3651,7 +3656,8 @@ public class Member { // 속성에 대해서 BaseEntity에서 상속 >>> 임베�
 
 ### 실행 결과
 
-![Untitled](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%2066.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/7bf8498b-f08b-4ea9-ac78-6f5d9871029f)
+
 
 - 주소 테이블에 ID란 것이 생긴 것을 볼 수 있다.
     - 자체적인 ID가 있다는 것은 값 타입이 아닌 엔티티라는 것을 의미한다.
@@ -3679,15 +3685,15 @@ public class Member { // 속성에 대해서 BaseEntity에서 상속 >>> 임베�
 
 ---
 
-# 섹션 10 - ****객체지향 쿼리 언어1 - 기본 문법****
+# 섹션 10 - 객체지향 쿼리 언어1 - 기본 문법
 
 ## 📝 객체지향 쿼리 언어 소개
 
 JPA는 다양한 쿼리 방법을 지원한다.
 
-- **JPQL >>> 중요**
+- JPQL >>> 중요
 - JPA Criteria
-- **QueryDSL >>> 중요**
+- QueryDSL >>> 중요
 - 네이티브 SQL
 - JDBC API 직접 사용, MyBatis, SpringJdbcTemplate 함께 사용
 
@@ -3695,13 +3701,13 @@ JPA는 다양한 쿼리 방법을 지원한다.
 
 - JPA를 사용하면 엔티티 객체를 중심으로 개발할 수 있다.
     - SQL은 테이블 중심 / JPA는 엔티티 객체 중심!!!
-- 문제는 검색을 할 때도 **테이블이 아닌 엔티티 객체를 대상으로 검색해야 한다는 것이다.**
+- 문제는 검색을 할 때도 테이블이 아닌 엔티티 객체를 대상으로 검색해야 한다는 것이다.
 - 하지만 모든 DB 데이터를 객체로 변환해서 검색하는 것은 불가능하다.
 - 따라서 애플리케이션이 필요한 데이터만 DB에서 불러오려면 결국 검색 조건이 포함된 SQL이 필요하다.
-- JPA는 SQL을 추상화한 **JPQL**이라는 객체 지향 쿼리 언어 제공한다.
+- JPA는 SQL을 추상화한 JPQL이라는 객체 지향 쿼리 언어 제공한다.
     - Java Persistence Query Language
-- 문법은 SQL과 유사하며, 둘의 가장 큰 차이점은 **JPQL은 엔티티 객체를 대상으로, SQL은 데이터베이스 테이블을 대상으로 쿼리**한다는 것이다.
-- 즉, **JPQL을 한마디로 정의하면 객체 지향 SQL**이라고 말할 수 있다.
+- 문법은 SQL과 유사하며, 둘의 가장 큰 차이점은 JPQL은 엔티티 객체를 대상으로, SQL은 데이터베이스 테이블을 대상으로 쿼리한다는 것이다.
+- 즉, JPQL을 한마디로 정의하면 객체 지향 SQL이라고 말할 수 있다.
 
 ```java
 //검색String jpql = "select m From Member m where m.name like ‘%hello%'";
@@ -3712,10 +3718,10 @@ List<Member> result = em.createQuery(jpql, Member.class).getResultList();
 
 - 문자가 아닌 자바 코드로 JPQL을 작성할 수 있음
 - JPQL 빌더 역할
-- **컴파일 시점에 문법 오류를 찾을 수 있음**
-- **동적쿼리 작성 편리함**
-- **단순하고 쉬움**
-- **실무 사용 권장**
+- 컴파일 시점에 문법 오류를 찾을 수 있음
+- 동적쿼리 작성 편리함
+- 단순하고 쉬움
+- 실무 사용 권장
 
 ```java
 // JPQL
@@ -3733,8 +3739,8 @@ List<Member> list =
 ## 📝 JPQL 기본
 
 - JPQL은 객체지향 쿼리 언어다. 따라서 테이블을 대상으로 쿼리하는 것이 아니라 엔티티 객체를 대상으로 쿼리한다.
-- **JPQL은 SQL을 추상화해서 특정 데이터베이스 SQL에 의존하지 않는다.**
-- **JPQL은 결국 SQL로 변환된다.**
+- JPQL은 SQL을 추상화해서 특정 데이터베이스 SQL에 의존하지 않는다.
+- JPQL은 결국 SQL로 변환된다.
 
 ### 📜 JPQL 문법
 
@@ -3742,7 +3748,7 @@ List<Member> list =
 - 엔티티와 속성은 대소문자 구분 O (Member, age)
 - JPQL 키워드는 대소문자 구분 X (SELECT, FROM, where)
 - 테이블 이름이 아닌 엔티티 이름 사용(Member)
-- **별칭은 필수(m)** (as는 생략가능)
+- 별칭은 필수(m) (as는 생략가능)
 
 ![https://blog.kakaocdn.net/dn/bJc0wk/btrDKH3GOtp/OkAy9UHcAF3ttuZ7NlEhp0/img.png](https://blog.kakaocdn.net/dn/bJc0wk/btrDKH3GOtp/OkAy9UHcAF3ttuZ7NlEhp0/img.png)
 
@@ -3758,9 +3764,9 @@ Query query = em.createQuery("SELECT m.username, m.age from Member m");
 
 ### 📜 결과 조회 API
 
-- query.getResultList(): **결과가 하나 이상일 때**, 리스트 반환
+- query.getResultList(): 결과가 하나 이상일 때, 리스트 반환
     - 결과가 없으면 빈 리스트 반환
-- query.getSingleResult(): **결과가 정확히 하나**, 단일 객체 반환
+- query.getSingleResult(): 결과가 정확히 하나, 단일 객체 반환
     - 결과가 없으면: javax.persistence.NoResultException
     - 둘 이상이면: javax.persistence.NonUniqueResultException
 
@@ -3785,28 +3791,28 @@ query.setParameter(1, usernameParam);
 
 - SELECT 절에 조회할 대상을 지정하는 것
 - 프로젝션 대상: 엔티티, 임베디드 타입, 스칼라 타입(숫자, 문자 등 기본 데이터 타입)
-    - SELECT **m** FROM Member m -> 엔티티 프로젝션
-    - SELECT **m.team** FROM Member m -> 엔티티 프로젝션
-    - SELECT **m.address** FROM Member m -> 임베디드 타입 프로젝션
-    - SELECT **m.username, m.age** FROM Member m -> 스칼라 타입 프로젝션
-- **DISTINCT로 중복 제거 가능**
+    - SELECT m FROM Member m -> 엔티티 프로젝션
+    - SELECT m.team FROM Member m -> 엔티티 프로젝션
+    - SELECT m.address FROM Member m -> 임베디드 타입 프로젝션
+    - SELECT m.username, m.age FROM Member m -> 스칼라 타입 프로젝션
+- DISTINCT로 중복 제거 가능
 
 ### 📜 프로젝션 여러 값 조회
 
-- SELECT **m.username, m.age** FROM Member m
+- SELECT m.username, m.age FROM Member m
 - 1. Query 타입으로 조회
 - 2. Object[] 타입으로 조회
 - 3. new 명령어로 조회
     - 단순 값을 DTO로 바로 조회
-        - SELECT **new** jpabook.jpql.UserDTO(m.username, m.age) FROM Member m
+        - SELECT new jpabook.jpql.UserDTO(m.username, m.age) FROM Member m
         - 패키지 명을 포함한 전체 클래스 명 입력
     - 순서와 타입이 일치하는 생성자 필요
 
 ## 📝 페이징
 
 - JPA는 페이징을 다음 두 API로 추상화
-- **setFirstResult**(int startPosition) : 조회 시작 위치(0부터 시작)
-- **setMaxResults**(int maxResult) : 조회할 데이터 수
+- setFirstResult(int startPosition) : 조회 시작 위치(0부터 시작)
+- setMaxResults(int maxResult) : 조회할 데이터 수
 
 ```java
 //페이징 쿼리String jpql = "select m from Member m order by m.name desc";
@@ -3818,39 +3824,39 @@ List<Member> resultList = em.createQuery(jpql, Member.class)
 
 ## 📝 조인
 
-- 내부 조인: SELECT m FROM Member m **[INNER] JOIN** m.team t
-- 외부 조인: SELECT m FROM Member m **LEFT [OUTER] JOIN** m.team t
+- 내부 조인: SELECT m FROM Member m [INNER] JOIN m.team t
+- 외부 조인: SELECT m FROM Member m LEFT [OUTER] JOIN m.team t
 - 세타 조인: SELECT count(m) FROM Member m, Team t WHERE m.username = t.name
 
 ### 📜 ON
 
 - ON절을 활용한 조인(JPA 2.1부터 지원)
-    - **1. 조인 대상 필터링**
+    - 1. 조인 대상 필터링
         - 예) 회원과 팀을 조인하면서, 팀 이름이 A인 팀만 조인
-        - **JPQL**: SELECT m, t FROM Member m LEFT JOIN m.team t **on** t.name = 'A'
-        - **SQL**: SELECT m.*, t.* FROM Member m LEFT JOIN Team t **ON** m.TEAM_ID=t.id and t.name='A'
-    - **2. 연관관계 없는 엔티티 외부 조인(하이버네이트 5.1부터)**
+        - JPQL: SELECT m, t FROM Member m LEFT JOIN m.team t on t.name = 'A'
+        - SQL: SELECT m.*, t.* FROM Member m LEFT JOIN Team t ON m.TEAM_ID=t.id and t.name='A'
+    - 2. 연관관계 없는 엔티티 외부 조인(하이버네이트 5.1부터)
         - 예) 회원의 이름과 팀의 이름이 같은 대상 외부 조인
-        - **JPQL**: SELECT m, t FROM Member m LEFT JOIN Team t **on** m.username = t.name
-        - **SQL**: SELECT m.*, t.* FROM Member m LEFT JOIN Team t **ON** m.username = t.name
+        - JPQL: SELECT m, t FROM Member m LEFT JOIN Team t on m.username = t.name
+        - SQL: SELECT m.*, t.* FROM Member m LEFT JOIN Team t ON m.username = t.name
 
 ## 📝 서브 쿼리
 
 JPA에서도 SQL처럼 서브 쿼리를 사용할 수 있다.
 
 - 나이가 평균보다 많은 회원
-    - select m from Member m where m.age > **(select avg(m2.age) from Member m2)**
+    - select m from Member m where m.age > (select avg(m2.age) from Member m2)
 - 한 건이라도 주문한 고객
-    - select m from Member m where **(select count(o) from Order o where m = o.member)** > 0
+    - select m from Member m where (select count(o) from Order o where m = o.member) > 0
 
 ### 📜 서브 쿼리 지원 함수
 
 - [NOT] EXISTS (subquery): 서브쿼리에 결과가 존재하면 참이 된다.
-    - ex) select m from Member m where **exists** (select t from m.team t where t.name = ‘팀A')
+    - ex) select m from Member m where exists (select t from m.team t where t.name = ‘팀A')
 - ALL: 모두 만족하면 참이 된다.
-    - ex) select o from Order o where o.orderAmount > **ALL** (select p.stockAmount from Product p)
+    - ex) select o from Order o where o.orderAmount > ALL (select p.stockAmount from Product p)
 - ANY, SOME: 같은 의미, 조건을 하나라도 만족하면 참이 된다.
-    - ex) select m from Member m where m.team = **ANY** (select t from Team t)
+    - ex) select m from Member m where m.team = ANY (select t from Team t)
 - [NOT] IN (subquery): 서브쿼리의 결과 중 하나라도 같은 것이 있으면 참이 된다.
 
 ### 📜 JPA 서브 쿼리 한계
@@ -3874,29 +3880,29 @@ JPA에서도 SQL처럼 서브 쿼리를 사용할 수 있다.
 - EXISTS, IN
 - AND, OR, NOT
 - =, >, >=, <, <=, <>
-- BETWEEN, LIKE, **IS NULL**
+- BETWEEN, LIKE, IS NULL
 
 ## 📝 조건식
 
-**기본 CASE 식**
+기본 CASE 식
 
 ```sql
 select case when m.age <= 10 then '학생요금'when m.age >= 60 then '경로요금' else '일반요금'end from Member m
 ```
 
-**단순 CASE 식**
+단순 CASE 식
 
 ```sql
 select case t.name
 		when '팀A' then '인센티브110%' when '팀B' then '인센티브120%' else '인센티브105%'end from Team t
 ```
 
-- **COALESCE**: 하나씩 조회해서 null이 아니면 반환
+- COALESCE: 하나씩 조회해서 null이 아니면 반환
     - 사용자 이름이 없으면 '이름 없는 회원'을 반환
-    - select **coalesce(m.username,'이름 없는 회원')** from Member m
-- **NULLIF**: 두 값이 같으면 null 반환, 다르면 첫번째 값 반환
+    - select coalesce(m.username,'이름 없는 회원') from Member m
+- NULLIF: 두 값이 같으면 null 반환, 다르면 첫번째 값 반환
     - 사용자 이름이 ‘관리자’면 null을 반환하고 나머지는 본인의 이름을 반환
-    - select **NULLIF(m.username, '관리자')** from Member m
+    - select NULLIF(m.username, '관리자') from Member m
 
 ---
 
@@ -3913,32 +3919,32 @@ select case t.name
 
 ### 📜 사용자 정의 함수 호출
 
-- 하이버네이트는 사용 전 **방언**에 추가해야 한다.
+- 하이버네이트는 사용 전 방언에 추가해야 한다.
     - 사용하는 DB 방언을 상속받고, 사용자 정의 함수를 등록한다.
     - select function('group_concat', i.name) from Item i
 
 ---
 
-# 섹션 11 - ****객체지향 쿼리 언어2 - 중급 문법****
+# 섹션 11 - 객체지향 쿼리 언어2 - 중급 문법
 
 ## 📝 JPQL - 경로 표현식
 
-- 경로 표현식 > **점(.)을 찍어 객체 그래프를 탐색하는 것**
-- **상태 필드**(state field): 단순히 값을 저장하기 위한 필드(ex: m.username)
+- 경로 표현식 > 점(.)을 찍어 객체 그래프를 탐색하는 것
+- 상태 필드(state field): 단순히 값을 저장하기 위한 필드(ex: m.username)
     - 경로 탐색의 끝 / 탐색 X
-- **연관 필드**(association field): 연관관계를 위한 필드
-    - **단일 값 연관 필드**: @ManyToOne, @OneToOne, 대상이 엔티티(ex: m.team)
-        - **묵시적 내부 조인(inner join) 발생**, 탐색 O
-    - **컬렉션 값 연관 필드**: @OneToMany, @ManyToMany, 대상이 컬렉션(ex: m.orders)
-        - **묵시적 내부 조인(inner join) 발생**, 탐색 X
+- 연관 필드(association field): 연관관계를 위한 필드
+    - 단일 값 연관 필드: @ManyToOne, @OneToOne, 대상이 엔티티(ex: m.team)
+        - 묵시적 내부 조인(inner join) 발생, 탐색 O
+    - 컬렉션 값 연관 필드: @OneToMany, @ManyToMany, 대상이 컬렉션(ex: m.orders)
+        - 묵시적 내부 조인(inner join) 발생, 탐색 X
         - FROM 절에서 명시적 조인을 통해 별칭을 얻으면 별칭을 통해 탐색 가능
 
 ### 📜 명시적 조인, 묵시적 조인
 
 - 명시적 조인: join 키워드 직접 사용
-    - select m from Member m **join m.team t**
+    - select m from Member m join m.team t
 - 묵시적 조인: 경로 표현식에 의해 묵시적으로 SQL 조인 발생(내부 조인만 가능)
-    - select **m.team** from Member m
+    - select m.team from Member m
 
 ### 📜 경로 표현식 - 예제
 
@@ -3955,7 +3961,7 @@ select case t.name
 - 항상 내부 조인
 - 컬렉션은 경로 탐색의 끝
     - 만약, 경로 탐색을 하고 싶다면?
-        - **명시적 조인을 통해 별칭을 얻어야 함**
+        - 명시적 조인을 통해 별칭을 얻어야 함
 - 경로 탐색은 주로 SELECT, WHERE 절에서 사용하지만, 묵시적 조인으로 인해 SQL
 
 의 FROM (JOIN) 절에 영향을 줌
@@ -3964,17 +3970,17 @@ select case t.name
 
 - 묵시적 조인은 조인이 일어나는 상황을 한눈에 파악하기 어려움
 - 조인은 SQL 튜닝에 중요 포인트
-- **가급적 묵시적 조인 대신에 명시적 조인을 사용하자**
+- 가급적 묵시적 조인 대신에 명시적 조인을 사용하자
 
 ---
 
 ## 📝 JPQL - 페치 조인(fetch join)
 
-**페치 조인은 실무에서 매우 중요한 요소이다.**
+페치 조인은 실무에서 매우 중요한 요소이다.
 
 - SQL 조인 종류 X
-- JPQL에서 **성능 최적화**를 위해 제공하는 기능
-- 연관된 엔티티나 컬렉션을 **SQL 한 번에 함께 조회**하는 기능
+- JPQL에서 성능 최적화를 위해 제공하는 기능
+- 연관된 엔티티나 컬렉션을 SQL 한 번에 함께 조회하는 기능
     - 페치 조인을 하지 않으면, 여러번 조회해야 하는 비효율적인 작업이 수행된다.
 - join fetch 명령어 사용
 - 페치 조인 ::= [ LEFT [OUTER] | INNER ] JOIN FETCH 조인경로
@@ -3982,9 +3988,9 @@ select case t.name
 ### 📜 엔티티 페치 조인
 
 - 회원을 조회하면서 연관된 팀도 함께 조회(SQL 한 번에)
-- SQL을 보면 회원 뿐만 아니라 **팀(T.*)**도 함께 **SELECT**
-- **[JPQL]** select **m** from Member m **join fetch** m.team
-- **[SQL]** SELECT **M.*, T.*** FROM MEMBER M **INNER JOIN TEAM T** ON M.TEAM_ID=T.ID
+- SQL을 보면 회원 뿐만 아니라 팀(T.*)도 함께 SELECT
+- [JPQL] select m from Member m join fetch m.team
+- [SQL] SELECT M.*, T.* FROM MEMBER M INNER JOIN TEAM T ON M.TEAM_ID=T.ID
 
 ![https://blog.kakaocdn.net/dn/sLYk0/btrDWEru1Wi/2YCjX9Jkp2TRAdCBVL6Ok0/img.png](https://blog.kakaocdn.net/dn/sLYk0/btrDWEru1Wi/2YCjX9Jkp2TRAdCBVL6Ok0/img.png)
 
@@ -4010,8 +4016,8 @@ username = 회원3, teamname = 팀B
 ### 📜 컬렉션 페치 조인
 
 - 일대다 관계, 컬렉션 페치 조인
-- **[JPQL]** select t from Team t **join fetch t.members** where t.name = ‘팀A'
-- **[SQL]** SELECT T.*, **M.*** FROM TEAM T INNER JOIN MEMBER M ON T.ID=M.TEAM_ID WHERE T.NAME = '팀A'
+- [JPQL] select t from Team t join fetch t.members where t.name = ‘팀A'
+- [SQL] SELECT T.*, M.* FROM TEAM T INNER JOIN MEMBER M ON T.ID=M.TEAM_ID WHERE T.NAME = '팀A'
 
 ![https://blog.kakaocdn.net/dn/cuRWjd/btrDYdzX3HN/Ho2lzLcQAaZB5q9RIvmzd0/img.png](https://blog.kakaocdn.net/dn/cuRWjd/btrDYdzX3HN/Ho2lzLcQAaZB5q9RIvmzd0/img.png)
 
@@ -4050,7 +4056,7 @@ teamname = 팀A, team = Team@0x100
     - 1. SQL에 DISTINCT를 추가
     - 2. 애플리케이션에서 엔티티 중복 제거
         - DISTINCT가 추가로 애플리케이션에서 중복 제거시도
-        - 같은 식별자를 가진 **Team 엔티티 제거**
+        - 같은 식별자를 가진 Team 엔티티 제거
 
 ![https://blog.kakaocdn.net/dn/lRgaD/btrDVopCJ5e/ZbrdUmkCwnREXj93cyAM5K/img.png](https://blog.kakaocdn.net/dn/lRgaD/btrDVopCJ5e/ZbrdUmkCwnREXj93cyAM5K/img.png)
 
@@ -4059,15 +4065,15 @@ teamname = 팀A, team = Team@0x100
 - 일반 조인 실행시 연관된 엔티티를 함께 조회하지 않음
     - JPQL은 결과를 반환할 때 연관관계 고려 X
     - 단지 SELECT 절에 지정한 엔티티만 조회할 뿐
-- 페치 조인을 사용할 때만 연관된 엔티티도 함께 조회**(즉시 로딩)**
-- **페치 조인은 객체 그래프를 SQL 한번에 조회하는 개념**
+- 페치 조인을 사용할 때만 연관된 엔티티도 함께 조회(즉시 로딩)
+- 페치 조인은 객체 그래프를 SQL 한번에 조회하는 개념
 
 ### 📜 페치 조인의 한계
 
-- **페치 조인 대상에는 별칭을 줄 수 없다.**
+- 페치 조인 대상에는 별칭을 줄 수 없다.
     - 하이버네이트에서는 가능하나 가급적 사용 X
-- **둘 이상의 컬렉션은 페치 조인 할 수 없다.**
-- **컬렉션을 페치 조인하면 페이징 API(setFirstResult, setMaxResults)를 사용할 수 없다.**
+- 둘 이상의 컬렉션은 페치 조인 할 수 없다.
+- 컬렉션을 페치 조인하면 페이징 API(setFirstResult, setMaxResults)를 사용할 수 없다.
     - 일대일, 다대일 같은 단일 값 연관 필드들은 페치 조인해도 페이징 가능
     - 하이버네이트는 경고 로그를 남기고 메모리에서 페이징(매우 위험)
 
@@ -4095,8 +4101,8 @@ teamname = 팀A, team = Team@0x100
 
 - 조회 대상을 특정 자식으로 한정
 - 예) Item 중에 Book, Movie를 조회해라
-    - **[JPQL]** select i from Item i where **type(i)** IN (Book, Movie)
-    - **[SQL]** select i from i where i.DTYPE in (‘B’, ‘M’)
+    - [JPQL] select i from Item i where type(i) IN (Book, Movie)
+    - [SQL] select i from i where i.DTYPE in (‘B’, ‘M’)
 
 ### 📜 TREAT(JPA 2.1)
 
@@ -4104,8 +4110,8 @@ teamname = 팀A, team = Team@0x100
 - 상속 구조에서 부모 타입을 특정 자식 타입으로 다룰 때 사용
 - FROM, WHERE, SELECT(하이버네이트 지원) 사용
 - 예) 부모인 Item과 자식 Book이 있다.
-    - **[JPQL]** select i from Item i where **treat**(i as Book).auther = ‘kim’
-    - **[SQL]** select i.* from Item i where i.DTYPE = ‘B’ and i.auther = ‘kim’
+    - [JPQL] select i from Item i where treat(i as Book).auther = ‘kim’
+    - [SQL] select i.* from Item i where i.DTYPE = ‘B’ and i.auther = ‘kim’
 
 ---
 
@@ -4114,26 +4120,26 @@ teamname = 팀A, team = Team@0x100
 ### 📜 기본 키 값
 
 - JPQL에서 엔티티를 직접 사용하면 SQL에서 해당 엔티티의 기본 키 값을 사용
-- **[JPQL]**
-    - select **count(m.id)** from Member m //엔티티의 아이디를 사용
-    - select **count(m)** from Member m //엔티티를 직접 사용
-- **[SQL]**(위의 JPQL 둘 다 같은 다음 SQL 실행) select count(m.id) as cnt from Member m
+- [JPQL]
+    - select count(m.id) from Member m //엔티티의 아이디를 사용
+    - select count(m) from Member m //엔티티를 직접 사용
+- [SQL](위의 JPQL 둘 다 같은 다음 SQL 실행) select count(m.id) as cnt from Member m
 
-**엔티티를 파라미터로 전달**
+엔티티를 파라미터로 전달
 
 ```java
 String jpql = "select m from Member m where m = :member";
 List resultList = em.createQuery(jpql).setParameter("member", member).getResultList();
 ```
 
-**식별자를 직접 전달**
+식별자를 직접 전달
 
 ```java
 String jpql = "select m from Member m where m.id = :memberId";
 List resultList = em.createQuery(jpql).setParameter("memberId", memberId).getResultList();
 ```
 
-**실행된 SQL**
+실행된 SQL
 
 ```sql
 select m.* from Member m where m.id=?
@@ -4141,7 +4147,7 @@ select m.* from Member m where m.id=?
 
 ### 📜 외래 키 값
 
-**엔티티를 파라미터로 전달**
+엔티티를 파라미터로 전달
 
 ```java
 Team team = em.find(Team.class, 1L);
@@ -4149,14 +4155,14 @@ String qlString = "select m from Member m where m.team = :team";
 List resultList = em.createQuery(qlString).setParameter("team", team).getResultList();
 ```
 
-**식별자를 직접 전달**
+식별자를 직접 전달
 
 ```java
 String qlString = "select m from Member m where m.team.id = :teamId";
 List resultList = em.createQuery(qlString).setParameter("teamId", teamId).getResultList();
 ```
 
-**실행된 SQL**
+실행된 SQL
 
 ```sql
 select m.* from Member m where m.team_id=?
@@ -4169,8 +4175,8 @@ select m.* from Member m where m.team_id=?
 - 미리 정의해서 이름을 부여해두고 사용하는 JPQL
 - 정적 쿼리
 - 어노테이션, XML에 정의
-- **애플리케이션 로딩 시점에 초기화 후 재사용**
-- **애플리케이션 로딩 시점에 쿼리를 검증**
+- 애플리케이션 로딩 시점에 초기화 후 재사용
+- 애플리케이션 로딩 시점에 쿼리를 검증
 
 ### 📜 Named 쿼리 - 어노테이션
 
@@ -4227,9 +4233,9 @@ List<Member> resultList =
 ### 📜 벌크 연산
 
 - 쿼리 한 번으로 여러 테이블 로우 변경(엔티티)
-- **executeUpdate()의 결과는 영향받은 엔티티 수 반환**
-- **UPDATE, DELETE 지원**
-- **INSERT(insert into .. select, 하이버네이트 지원)**
+- executeUpdate()의 결과는 영향받은 엔티티 수 반환
+- UPDATE, DELETE 지원
+- INSERT(insert into .. select, 하이버네이트 지원)
 
 ```java
 String qlString = "update Product p " +
@@ -4245,4 +4251,4 @@ int resultCount = em.createQuery(qlString)
 - 벌크 연산은 영속성 컨텍스트를 무시하고 데이터베이스에 직접 쿼리하므로 영속성 컨텍스트의 1차 캐시에 저장되어 있는 데이터와 데이터베이스에 저장되어 있는 데이터가 서로 다른 경우가 발생할 수 있음
 - 두 가지 해결책
     - 1. 벌크 연산을 먼저 실행
-    - 2. **벌크 연산 수행 후 영속성 컨텍스트 초기화**
+    - 2. 벌크 연산 수행 후 영속성 컨텍스트 초기화
