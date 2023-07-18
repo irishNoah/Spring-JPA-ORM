@@ -47,7 +47,8 @@
 
 ### JPA와 상속 - 저장 & 조회
 
-![저장](%E1%84%8E%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5(ORM&JPA)%209f153f5a74004275a96b628020224f80/Untitled%201.png)
+![image](https://github.com/irishNoah/Spring-JPA-ORM/assets/80700537/dfdb4dd9-a912-4d17-a957-dde92fee77dd)
+
 
 저장
 
